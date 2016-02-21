@@ -2,7 +2,7 @@ extends layout
 block custom_script
   script(type='text/javascript') var $TIMESTAMP='#{timestamp}',lang=!{json_lang},db,Job=!{json_data},$Job=jQuery.extend(!0,{},Job),urls=!{urls}
   script(type='text/javascript', src=fn.url.js('maze.min'))
-  script(type='text/javascript') var dskills=$('.dskill');dnss();
+  script(type='text/javascript') var dskills=$('.dskill');skillsim();
 
 block content
   div.container

@@ -1,4 +1,4 @@
-function dnss() {
+function skillsim() {
   // initialize all the images
   $('.jobsprite').each(function() {
     this.style.backgroundImage = "url('" + urls.mainbar + "/" + $TIMESTAMP + "-jobicon_pvp.png')";
@@ -343,7 +343,11 @@ function refresh_sp(max_sp, reset) {
 }
 
 window.addEventListener('popstate', function(e) {
-  Job = e.state || jQuery.extend(!0, {}, $Job);
+  oldJob = e.state || jQuery.extend(!0, {}, $Job);
+  oldJob.ApplyType = Job.ApplyType;
+  oldJob.Free = Job.Free;
+  Job = oldJob;
+
   dskills.each(function() {
     var dom = $(this);
     var skillID = this.getAttribute('data-skill');
@@ -357,7 +361,6 @@ window.addEventListener('popstate', function(e) {
   $('#level').val(Job.MaxLevel);
 
   var a = '#pvp', b = '#pve';
-  set_cookie('apply_type', Job.ApplyType);
   if (Job.ApplyType) {
     a = '#pve', b = '#pvp';
   }
@@ -365,7 +368,6 @@ window.addEventListener('popstate', function(e) {
   $(b).addClass(ON);
 
   a = '#free', b = '#strict';
-  set_cookie('free', Job.Free ? 1 : 0);
   if (Job.Free) {
     a = '#strict', b = '#free';
   }
