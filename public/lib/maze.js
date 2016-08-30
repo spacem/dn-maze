@@ -1,7 +1,7 @@
 function skillsim() {
   // initialize all the images
   $('.jobsprite').each(function() {
-    this.style.backgroundImage = "url('" + urls.mainbar + "/" + $TIMESTAMP + "-jobicon_pvp.png')";
+    this.style.backgroundImage = "url('" + urls.mainbar + "/" + $TIMESTAMP + "jobicon_pvp.png')";
   });
 
   // is async, don't care when we get it
@@ -25,7 +25,7 @@ function skillsim() {
     sprite[1] *= -50;
     sprite[2] *= -50;
 
-    this.style.background = "url('"+ urls.mainbar  +"/" + $TIMESTAMP + "-skillicon" + sprite[0] + grayed + ".png') " + sprite[1] + "px " + sprite[2] + "px"; // initial setup
+    this.style.background = "url('"+ urls.mainbar  +"/" + $TIMESTAMP + "skillicon" + sprite[0] + grayed + ".png') " + sprite[1] + "px " + sprite[2] + "px"; // initial setup
     this.getElementsByClassName('skill-bdr')[0].style.background = "url('" + urls.border + "') 100px 0";
 
 
