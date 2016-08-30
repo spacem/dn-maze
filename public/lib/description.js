@@ -65,24 +65,30 @@ function update_description(thiz, dom) {
 
 
   // level related fields
-  var curr = lvl[0] + techs, currLevel, nextLevel, currApply, nextApply;
-  currLevel = skill.Levels[curr];
-  currApply = currLevel ? currLevel.ApplyType[Job.ApplyType] : null;
-  nextLevel = skill.Levels[curr + 1];
-  nextApply = nextLevel ? nextLevel.ApplyType[Job.ApplyType] : null;
-  if (curr == 0) {
-    currLevel = nextLevel;
-    currApply = nextApply;
-  }
+  var curr = lvl[0] + techs;
+  var nextLevelLimit = skill.LevelLimit[curr-1];
+  var nextSkillPoint = skill.SkillPoint[curr];
+
+  var curDecreaseSP = skill.DecreaseSP[Job.ApplyType][curr-1];
+  var nextDecreaseSP = skill.DecreaseSP[Job.ApplyType][curr];
+
+  var curDelayTime = skill.DelayTime[Job.ApplyType][curr-1];
+  var nextDelayTime = skill.DelayTime[Job.ApplyType][curr];
+
+  var curSkillExplanationID = skill.SkillExplanationID[Job.ApplyType][curr-1];
+  var nextSkillExplanationID = skill.SkillExplanationID[Job.ApplyType][curr];
+
+  var curSkillExplanationIDParam = skill.SkillExplanationIDParam[Job.ApplyType][curr-1];
+  var nextSkillExplanationIDParam = skill.SkillExplanationIDParam[Job.ApplyType][curr];
 
   // level up req stuff
-  if (nextLevel) {
+  if (nextLevelLimit) {
     d.find('.dreq').show().removeClass('hidden');
     d.find('.dreqlvl')
      .find('span:last')
      .removeClass('r')
-     .addClass(Job.MaxLevel < nextLevel.LevelLimit ? 'r' : null)
-     .text(nextLevel.LevelLimit);
+     .addClass(Job.MaxLevel < nextLevelLimit ? 'r' : null)
+     .text(nextLevelLimit);
 
     // sp by job req
     if (skill.NeedSP) {
@@ -119,16 +125,16 @@ function update_description(thiz, dom) {
 
     d.find('.dreqsp')
      .find('span:last')
-     .text(nextLevel.SkillPoint)
+     .text(nextSkillPoint)
      .removeClass('r')
-     .addClass((jobSP + nextLevel.SkillPoint > maxSP*Job.SP[jobNum] ||
-                totalSP + nextLevel.SkillPoint > maxSP) ? 'r' : null);
+     .addClass((jobSP + nextSkillPoint > maxSP*Job.SP[jobNum] ||
+                totalSP + nextSkillPoint > maxSP) ? 'r' : null);
   } else {
     d.find('.dreq').hide().addClass('hidden');
   }
 
   // apply type specific
-  var decreaseSP = currApply ? currApply.DecreaseSP : nextApply.DecreaseSP;
+  var decreaseSP = curDecreaseSP ? curDecreaseSP : nextDecreaseSP;
   if (decreaseSP) {
     d.find('.dmp')
      .removeClass('hidden')
@@ -139,7 +145,7 @@ function update_description(thiz, dom) {
     d.find('.dmp').hide().addClass('hidden');
   }
 
-  var delayTime = (currApply ? currApply.DelayTime : nextApply.DelayTime) / 1000;
+  var delayTime = (curDelayTime ? curDelayTime : nextDelayTime) / 1000;
   if (delayTime) {
     d.find('.dcd')
      .removeClass('hidden')
@@ -152,8 +158,8 @@ function update_description(thiz, dom) {
 
 
   // descriptions
-  var explID = currApply ? currApply.SkillExplanationID : nextApply.SkillExplanationID;
-  var explParams = currApply ? currApply.SkillExplanationIDParam : nextApply.SkillExplanationIDParam;
+  var explID = curSkillExplanationID ? curSkillExplanationID : nextSkillExplanationID;
+  var explParams = curSkillExplanationIDParam ? curSkillExplanationIDParam : nextSkillExplanationIDParam;
   d.find('.dnowv').html(desc_format(db.Lookup[explID], explParams));
   if (curr == 0 || curr == skill.MaxLevel) { // level 0/maxed; no next, but show next/now
     d.find('.dnext').hide().addClass('hidden');
@@ -161,8 +167,8 @@ function update_description(thiz, dom) {
   } else {
     d.find('.dnextdiv').show();
     d.find('.dnext').show().removeClass('hidden');
-    d.find('.dnextv').html(desc_format(db.Lookup[nextApply.SkillExplanationID],
-                                       nextApply.SkillExplanationIDParam));
+    d.find('.dnextv').html(desc_format(db.Lookup[nextSkillExplanationID],
+                                       nextSkillExplanationIDParam));
   }
 
   opts.content = d;

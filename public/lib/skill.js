@@ -15,7 +15,7 @@ function skill_adj(e) {
     lvl[0] = Math.min(lvl[1], max ? lvl[1] : lvl[0] + 1);
   } else if (e.button == 2) { // right click
     lvl[0] = Math.max(0, max ? 0 : lvl[0] - 1);
-    if (skill.Levels[1].LevelLimit == 1 && lvl[0] == 0) { // default case
+    if (skill.LevelLimit[1-1] == 1 && lvl[0] == 0) { // default case
       lvl[0] = 1;
     }
   }
@@ -29,7 +29,7 @@ function skill_adj(e) {
   var diff = 0, end = Math.max(prev, lvl[0]), inc = prev < lvl[0], totalSP = get_total_sp(), maxSP = get_max_sp();
   if (inc) {
     for (var i = prev + 1; i <= lvl[0]; i++) {
-      var s = skill.Levels[i].SkillPoint;
+      var s = skill.SkillPoint[i-1];
       if (sp[0] + diff + s > sp[1] || totalSP + diff + s > maxSP) {
         lvl[0] = i - 1;
         break;
@@ -39,7 +39,7 @@ function skill_adj(e) {
     }
   } else {
     for (var i = prev; i > lvl[0]; i--) {
-      var s = skill.Levels[i].SkillPoint;
+      var s = skill.SkillPoint[i-1];
       diff -= s;
       if (!Job.Free && !can_reduce_skill(skillID, skill, i - 1, jobNum, Job.TSP[jobNum] + diff)) {
         lvl[0] = i;
