@@ -47,3 +47,6 @@ var api_tech = require('./routes/tech')(configs);
 app.use('/', simulator);
 app.use('/', home);
 app.use('/api', api_tech);
+
+var filePath = __dirname + '/public';
+app.use(express.static(filePath));

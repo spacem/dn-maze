@@ -8,15 +8,20 @@ module.exports = function(configs) {
       jobs = configs.jobs,
       db = configs.db,
       format = configs.format;
+      
+  var cap = 0;
+  if(db.Levels) {
+    cap = db.Levels.length;
+  }
 
   router.get('/', function(req, res) {
     res.render('home', {
-      title: "MAZE",
+      title: "dnskillsim",
       fn: maze.fn,
       lang: lang['public'],
       home_body: lang.home_body,
       jobs: jobs,
-      cap: db.Levels.length,
+      cap: cap,
       format: format,
       timestamp: maze.timestamp
     });

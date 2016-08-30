@@ -1,12 +1,12 @@
 {
-    "db": "/var/www/json/db.json",
+    "db": "db.json",
     "server": "",
-    "static": "http://static.localdomain.com",
+    "static": "http://dnskillsim.heroku.com/public",
     "uri": {
-        "mainbar": "$static/images/ui/mainbar",
-        "skill": "$static/images/ui/skill",
-        "uitemplatetexture": "$static/images/uitemplatetexture",
-        "json": "$static/json",
+        "mainbar": "$server/images/ui/mainbar",
+        "skill": "$server/images/ui/skill",
+        "uitemplatetexture": "$server/images/uitemplatetexture",
+        "json": "$server/json",
         "js": "$server/js",
         "css": "$server/css"
     }

@@ -42,6 +42,15 @@ $std-font-size: 14px;
     min-height: 40px !important;
     font-size: 12px;
 
+    background-color: #070506;
+    opacity: 0.8;
+    filter: alpha(opacity=95);
+    filter: alpha(opacity=80);
+    border-color: #8d8578;
+    border-style: solid;
+    border-width: 5px;
+    border-radius: 10px;
+
     .navbar-nav {
         & > li > a {
             padding-top: 13.5px;
@@ -244,4 +253,29 @@ $std-font-size: 14px;
         padding-left: 5px !important;
         width: 225px !important;
     }
+}
+
+body {
+  background-color: rgb(196,189,173);
+  color: #777;
+}
+
+.panel-heading {
+	background-color: #070506;
+	opacity: 0.8;
+	filter: alpha(opacity=95);
+	filter: alpha(opacity=80);
+	border-color: #8d8578;
+	border-style: solid;
+	border-width: 5px;
+	border-radius: 10px;
+}
+
+.panel {
+	background-color: rgb(233,231,224);
+	border-color: #8d8578;
+	border-style: solid;
+	border-width: 5px;
+	border-radius: 10px;
+	border-top-width: 0px;
 }
