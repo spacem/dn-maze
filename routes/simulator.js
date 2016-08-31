@@ -132,7 +132,6 @@ module.exports = function(configs) {
 
       var maybePlus1 = skill.LevelLimit[0] == 1 ? 1 : 0;
       var level = buildChars.indexOf(c) + maybePlus1;
-      console.log('skill', id, 'level', level, 'c', c);
 
       // tech determination
       for (var k = 1; k <= 2; k++) {
