@@ -8,11 +8,6 @@ module.exports = function(configs) {
       jobs = configs.jobs,
       db = configs.db,
       format = configs.format;
-      
-  var cap = 0;
-  if(db.Levels) {
-    cap = db.Levels.length;
-  }
 
   router.get('/', function(req, res) {
     res.render('home', {
@@ -21,7 +16,7 @@ module.exports = function(configs) {
       lang: lang['public'],
       home_body: lang.home_body,
       jobs: jobs,
-      cap: cap,
+      cap: db.Levels.length,
       format: format,
       timestamp: maze.timestamp
     });

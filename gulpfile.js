@@ -29,7 +29,7 @@ gulp.task('js', function() {
   return gulp.src(js_src)
     .pipe(concat('maze.js'))
     .pipe(rename({suffix: '.min'}))
-    .pipe(uglify())
+    // .pipe(uglify())
     .pipe(gulp.dest('./public/js'))
 });
 
