@@ -70,6 +70,11 @@ module.exports = function(configs) {
     for (var i = 0; i < 3; i++) {
       var st = line[i].SkillTree;
       skilltree = skilltree.concat(st[0], st[1], st[2], st[3], st[4], st[5]);
+      
+      if(line[i].AwakenSkillTree) {
+        st = line[i].AwakenSkillTree;
+        skilltree = skilltree.concat(st[0], st[1], st[2], st[3], st[4], st[5]);
+      }
     }
 
     var max_sp = 0;
@@ -93,10 +98,19 @@ module.exports = function(configs) {
       'Ring2': 'Ring'
     };
 
-    for (i = 0, j = 0; i < 72; i++, j++) {
-      var c = build[j], id = skilltree[i];
+    for (i = 0, j = 0; i < skilltree.length; i++, j++) {
+      var c;
+      if(j in build) {
+        c = build[j]
+      }
+      else {
+        c = '-';
+      }
+      var id = skilltree[i];
       if (id === null) {
-        if (c != '-') throw lang.error.skill_not_exist;
+        if (c != '-') {
+          // throw lang.error.skill_not_exist;
+        }
         continue;
       }
 
@@ -112,9 +126,13 @@ module.exports = function(configs) {
       }
 
       skill = $job.Skills[id];
+      if(!skill) {
+        continue;
+      }
 
       var maybePlus1 = skill.LevelLimit[0] == 1 ? 1 : 0;
       var level = buildChars.indexOf(c) + maybePlus1;
+      console.log('skill', id, 'level', level, 'c', c);
 
       // tech determination
       for (var k = 1; k <= 2; k++) {

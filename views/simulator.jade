@@ -5,7 +5,7 @@ block custom_script
   script(type='text/javascript') var dskills=$('.dskill');skillsim();
 
 block content
-  div.container
+  div.container-fluid
     div.modal#modal(tabindex='-1', role='dialog', aria-labeledby='warning', aria-hidden='true')
       div.modal-dialog: div.modal-content
         div.modal-header
@@ -37,17 +37,22 @@ block content
           span#max-progress= format(lang.progress.max, max_sp)
     div.row
       each job, index in line
-        div.col-md-4.noselect
-          div.panel.panel-default(data-job=index)
-            +panel_header(job, index)
-            +panel_body(job)
-
+        if job.AwakenSkillTree
+          div.col-lg-6.noselect
+            div.panel.panel-default(data-job=index)
+              +panel_header(job, index)
+              +awaken_panel_body(job)
+        else
+          div.col-lg-3.noselect
+            div.panel.panel-default(data-job=index)
+              +panel_header(job, index)
+              +panel_body(job)
+              
 
 mixin panel_header(job, index)
   div.panel-heading= job.JobName
     div.jobsprite(style=fn.image.job(job))
     span.label.pull-right #{data.TSP[index]}/#{job_max_sp[index]}
-
 
 mixin panel_body(job)
   div.panel-body
@@ -56,6 +61,22 @@ mixin panel_body(job)
         tr.skill-tr
           each skillID in skillRow
             +skill(job.Skills[skillID], skillID)
+            
+
+mixin awaken_panel_body(job)
+  div.panel-body
+    div.col-xs-12.col-sm-6
+      table.skill-table(style=fn.image.skilltree(job, version))
+        each skillRow in job.SkillTree
+          tr.skill-tr
+            each skillID in skillRow
+              +skill(job.Skills[skillID], skillID)
+    div.col-xs-12.col-sm-6
+      table.skill-table
+        each skillRow in job.AwakenSkillTree
+          tr.skill-tr
+            each skillID in skillRow
+              +skill(job.Skills[skillID], skillID)
 
 
 mixin skill(skill, skillID)
