@@ -251,7 +251,7 @@ module.exports = function(configs) {
     });
 
     res.render('simulator', {
-      title: format(lang.job_title, job.JobName, "MAZE"),
+      title: format(lang.job_title, job.JobName, "dnskillsim"),
       jobs: jobs,
       line: line,
       cap: db.Levels.length,

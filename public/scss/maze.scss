@@ -279,3 +279,18 @@ body {
 	border-radius: 10px;
 	border-top-width: 0px;
 }
+
+a {
+    color: #337ab7;
+}
+
+.chunkyness {
+    background-color: #070506;
+    opacity: 0.8;
+    filter: alpha(opacity=95);
+    filter: alpha(opacity=80);
+    border-color: #8d8578;
+    border-style: solid;
+    border-width: 5px;
+    border-radius: 10px;
+}

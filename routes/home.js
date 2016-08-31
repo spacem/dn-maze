@@ -11,7 +11,7 @@ module.exports = function(configs) {
 
   router.get('/', function(req, res) {
     res.render('home', {
-      title: "dnskillsim",
+      title: "dnskillsim - dragon nest skill simulator",
       fn: maze.fn,
       lang: lang['public'],
       home_body: lang.home_body,
