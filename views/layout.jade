@@ -2,6 +2,7 @@ doctype html
 html
   head
     meta(http-equiv='x-ua-compatible', content='IE=edge')
+    meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1")
     title= title
     link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic')
     link(rel='stylesheet', href=fn.url.css('bootstrap.min'))
@@ -24,3 +25,10 @@ html
           span |
           a(href="https://github.com/spacem/dnskillsim") browse source code
 
+    script.
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-72901872-3', 'auto');
+      ga('send', 'pageview');

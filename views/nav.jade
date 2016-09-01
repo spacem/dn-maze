@@ -1,5 +1,5 @@
 nav.navbar.navbar-static-top.navbar-default
-  div.container
+  div.container-fluid
     div#navbar-main
       div.navbar-header
         a.navbar-brand(href='/') dnskillsim
@@ -13,7 +13,3 @@ nav.navbar.navbar-static-top.navbar-default
                 li.dropdown-header= job1.JobName
                 each job2 in jobs.filter(function(j) { return jobs[j.ParentJob] == job1 })
                   li: a(href='/#{job2.EnglishName}-#{cap}')= job2.JobName
-      if line
-        div.navbar-form.pull-right(role='search')
-          div.input-group
-          input#s.form-control(type='search', placeholder=lang.search, name='s')

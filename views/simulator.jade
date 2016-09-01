@@ -14,21 +14,22 @@ block content
           h4.modal-title#modal-title
         div.modal-body#modal-body
     div.row#changables
-      div.col-md-2
+      div.col-xs-12.col-sm-9
         div.form-inline: div.form-group
           select.form-control#level
-          button#level-btn.btn.btn-sm.btn-default(type='reset')= lang.level.reset
-      div.col-md-7
-        button#techs.btn.btn-sm.btn-default(type='button') Techniques
-      div.col-md-3
-        div.btn-group.push-left
+          button#level-btn.hidden-xs.btn.btn-sm.btn-default(type='reset')= lang.level.reset
+          span &nbsp;
+          button#techs.btn.btn-sm.btn-default(type='button') Equipment
+          span &nbsp;
           button#free.btn.btn-sm(type='button', class={'btn-primary': data.Free, 'btn-default': !data.Free})= lang.mode.free
           button#strict.btn.btn-sm(type='button', class={'btn-primary': !data.Free, 'btn-default': data.Free})= lang.mode.strict
-        div.btn-group.pull-right
+          span &nbsp;
           button#pve.btn.btn-sm(type='button', class={'btn-primary': !data.ApplyType, 'btn-default': !!data.ApplyType})= lang.apply[0]
           button#pvp.btn.btn-sm(type='button', class={'btn-primary': !!data.ApplyType, 'btn-default': !data.ApplyType})= lang.apply[1]
-    div.row
-      div.col-md-12
+      div.col-xs-12.col-sm-3.text-right
+        if line
+            input#s.form-control(type='search', placeholder=lang.search, name='s')
+      div.col-xs-12
         div.progress
           - var sum = data.TSP[0] + data.TSP[1] + data.TSP[2], rem = max_sp - sum, progress = (sum / max_sp) * 100
           span#rem-progress= format(lang.progress.remaining, rem)
@@ -38,12 +39,12 @@ block content
     div.row
       each job, index in line
         if job.AwakenSkillTree
-          div.col-lg-6.noselect
+          div.col-lg-4.noselect
             div.panel.panel-default(data-job=index)
               +panel_header(job, index)
               +awaken_panel_body(job)
         else
-          div.col-lg-3.noselect
+          div.col-lg-4.noselect
             div.panel.panel-default(data-job=index)
               +panel_header(job, index)
               +panel_body(job)
@@ -65,18 +66,19 @@ mixin panel_body(job)
 
 mixin awaken_panel_body(job)
   div.panel-body
-    div.col-xs-12.col-sm-6
+    div.col-xs-6
       table.skill-table(style=fn.image.skilltree(job, version))
         each skillRow in job.SkillTree
           tr.skill-tr
             each skillID in skillRow
               +skill(job.Skills[skillID], skillID)
-    div.col-xs-12.col-sm-6
+    div.col-xs-6
       table.skill-table
         each skillRow in job.AwakenSkillTree
           tr.skill-tr
             each skillID in skillRow
-              +skill(job.Skills[skillID], skillID)
+              if skillID
+                +skill(job.Skills[skillID], skillID)
 
 
 mixin skill(skill, skillID)

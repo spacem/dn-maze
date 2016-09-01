@@ -218,6 +218,10 @@ $std-font-size: 14px;
     text-align: right;
     height: 37px;
 }
+#s {
+    @extend .font-size;
+    height: 37px;
+}
 
 #level-btn, .tech {
     margin-left: 5px;
@@ -225,13 +229,6 @@ $std-font-size: 14px;
 
 .btn-group {
     margin-left: 15px;
-}
-
-#s {
-    @extend .font-size;
-    height: 25px;
-    margin-top: 6px;
-    padding: 5px;
 }
 
 .modal {
