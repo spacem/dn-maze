@@ -8,7 +8,7 @@ function techniques() {
   body.empty();
   if (!techHTML) {
     body.text('Loading data...');
-    body.load('/api/tech/' + Job.EnglishName, function(res) {
+    body.load('/api/' + dnskillsim_region + '/tech/' + Job.EnglishName, function(res) {
       techHTML = res;
       init_techs();
     });

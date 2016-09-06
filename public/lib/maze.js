@@ -309,7 +309,7 @@ function history_push() {
   });
 
   var full_build_path = [];
-  for (var i = 0; i < 72; i++) {
+  for (var i = 0; i < build_path.length; i++) {
     if (build_path[i] === undefined) {
       full_build_path.push('-');
     } else {
@@ -317,7 +317,7 @@ function history_push() {
     }
   }
 
-  history.pushState(Job, null, '/' + Job.EnglishName + '-' + Job.MaxLevel + '/' + full_build_path.join(''));
+  history.pushState(Job, null, '/' + dnskillsim_region + '/' + Job.EnglishName + '-' + Job.MaxLevel + '/' + full_build_path.join(''));
 }
 
 function refresh_sp(max_sp, reset) {

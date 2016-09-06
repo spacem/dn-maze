@@ -1,17 +1,37 @@
 doctype html
 html
   head
-    meta(http-equiv='x-ua-compatible', content='IE=edge')
-    meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1")
-    title= title
-    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic')
-    link(rel='stylesheet', href=fn.url.css('bootstrap.min'))
+    meta(charset="utf-8")
+    meta(name="description", content="dnskillsim: dragon nest skill simulator")
+    meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1")
+    meta(http-equiv="X-UA-Compatible", content="IE=Edge")
+    link(rel="icon", type="image/png", href="/images/dnskillsim.png")
+    title DN Skill Sim
+    link(rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css")
+    link(rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css")
+    link(rel='stylesheet', href='//fonts.googleapis.com/css?family=Lato:400,700,400italic')
     link(rel='stylesheet', href=fn.url.css('maze.min'))
-  body
-    include nav
+  body(ng-app="dnsim")
+
+    header
+      div.container-fluid.chunkyness
+        div.container
+          div.row
+            div.xs-col-12
+              h3.header-title &nbsp;
+                a(href="/")
+                  img(src="/images/dnskillsim.png")
+                small.hidden-xs &nbsp; dragon nest skill simulator
+                dngearsim-region(ng-controller="RegionCtrl")
+                dngearsim-region
+    
     block content
-    script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js')
-    script(type='text/javascript', src=fn.url.js('bootstrap.min'))
+    script(type='text/javascript', src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js")
+    script(type='text/javascript', src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js")
+    script(type='text/javascript', src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js")
+    script(type='text/javascript') var lang=!{json_lang}
+    script(type='text/javascript', src="/js/maze.min.js")
+    script(type='text/javascript', src="/js/templates.min.js")
     block custom_script
     
     footer

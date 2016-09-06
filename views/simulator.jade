@@ -1,11 +1,20 @@
 extends layout
 block custom_script
-  script(type='text/javascript') var $TIMESTAMP='#{timestamp}',lang=!{json_lang},db,Job=!{json_data},$Job=jQuery.extend(!0,{},Job),urls=!{urls}
-  script(type='text/javascript', src=fn.url.js('maze.min'))
+  script(type='text/javascript') var $TIMESTAMP='#{timestamp}',db,Job=!{json_data},$Job=jQuery.extend(!0,{},Job),urls=!{urls},dnskillsim_region='!{region}'
   script(type='text/javascript') var dskills=$('.dskill');skillsim();
-
 block content
-  div.container-fluid
+  div.container#nav
+    div.row
+      ul.nav.nav-tabs
+        li.nav-tab
+          a(href="/")
+            span.glyphicon.glyphicon-wrench(aria-hidden="true")
+            span &nbsp; new skill build
+        li.nav-tab.active
+          a
+            span.glyphicon.glyphicon-wrench(aria-hidden="true")
+            span=' unnamed ' + line[2].JobName
+
     div.modal#modal(tabindex='-1', role='dialog', aria-labeledby='warning', aria-hidden='true')
       div.modal-dialog: div.modal-content
         div.modal-header
@@ -14,21 +23,6 @@ block content
           h4.modal-title#modal-title
         div.modal-body#modal-body
     div.row#changables
-      div.col-xs-12.col-sm-9
-        div.form-inline: div.form-group
-          select.form-control#level
-          button#level-btn.hidden-xs.btn.btn-sm.btn-default(type='reset')= lang.level.reset
-          span &nbsp;
-          button#techs.btn.btn-sm.btn-default(type='button') Equipment
-          span &nbsp;
-          button#free.btn.btn-sm(type='button', class={'btn-primary': data.Free, 'btn-default': !data.Free})= lang.mode.free
-          button#strict.btn.btn-sm(type='button', class={'btn-primary': !data.Free, 'btn-default': data.Free})= lang.mode.strict
-          span &nbsp;
-          button#pve.btn.btn-sm(type='button', class={'btn-primary': !data.ApplyType, 'btn-default': !!data.ApplyType})= lang.apply[0]
-          button#pvp.btn.btn-sm(type='button', class={'btn-primary': !!data.ApplyType, 'btn-default': !data.ApplyType})= lang.apply[1]
-      div.col-xs-12.col-sm-3.text-right
-        if line
-            input#s.form-control(type='search', placeholder=lang.search, name='s')
       div.col-xs-12
         div.progress
           - var sum = data.TSP[0] + data.TSP[1] + data.TSP[2], rem = max_sp - sum, progress = (sum / max_sp) * 100
@@ -36,6 +30,20 @@ block content
           span#curr-progress= format(lang.progress.curr, sum)
           div#progress.progress-bar.progress-bar-info(style={width: progress + '%'})
           span#max-progress= format(lang.progress.max, max_sp)
+
+      div.col-xs-12.col-sm-9
+        div.form-inline: div.form-group
+          button#techs.btn.btn-sm.btn-default(type='button') Equipment
+          span &nbsp;
+          button#free.btn.btn-sm(type='button', class={'btn-primary': data.Free, 'btn-default': !data.Free})= lang.mode.free
+          button#strict.btn.btn-sm(type='button', class={'btn-primary': !data.Free, 'btn-default': data.Free})= lang.mode.strict
+          span &nbsp;
+          button#pve.btn.btn-sm(type='button', class={'btn-primary': !data.ApplyType, 'btn-default': !!data.ApplyType})= lang.apply[0]
+          button#pvp.btn.btn-sm(type='button', class={'btn-primary': !!data.ApplyType, 'btn-default': !data.ApplyType})= lang.apply[1]
+
+      div.col-xs-12.col-sm-3.text-right
+        if line
+            input#s.form-control(type='search', placeholder=lang.search, name='s')
     div.row
       each job, index in line
         if job.AwakenSkillTree

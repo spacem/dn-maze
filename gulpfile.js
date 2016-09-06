@@ -14,7 +14,10 @@ var js_src = [
   './public/lib/maze.js',
   './public/lib/skill.js',
   './public/lib/description.js',
-  './public/lib/tech.js'
+  './public/lib/tech.js',
+  './ui/ng-app.js',
+  './services/**/*.js',
+  './ui/**/*.js',
 ];
 
 gulp.task('css', function () {
@@ -33,27 +36,31 @@ gulp.task('js', function() {
     .pipe(gulp.dest('./public/js'))
 });
 
-gulp.task('stamp', function(cb) {
-  // don't care about millisec
-  fs.writeFile('timestamp', parseInt((new Date).getTime() / 1000), cb);
-});
-
 gulp.task('watch', function() {
   gulp.watch(css_src, ['css']);
   gulp.watch(js_src, ['js']);
 });
 
-function inc(importance) {
-  return function() {
-    gulp.src('./package.json')
-        .pipe(bump({type: importance}))
-        .pipe(gulp.dest('./'))
-        .pipe(git.commit('[gulp] bumping package version'))
-        .pipe(tag())
-  };
+// html templates
+var templateCache = require('gulp-angular-templatecache');
+// var htmlmin = require('gulp-htmlmin');
+
+gulp.task('html', function () {
+  return gulp.src('ui/**/*.html')
+    // .pipe(plumber())
+    // .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(templateCache({root: 'ui/', filename: 'templates.min.js'}))
+    .pipe(gulp.dest('public/js'));
+});
+
+gulp.task('watch', ['default'], function() {
+  var watcher = gulp.watch(['services/**/*.js', 'ui/**/*.js', 'ui/**/*.html', 'views/**/*.js', 'public/scss/*.scss'], ['default']);
+  watcher.on('change', logChange);
+})
+
+function logChange(event) {
+  console.log('*************************************************');
+  console.log('*** ' + event.path + ' was ' + event.type + ' ***');
 }
 
-gulp.task('patch', inc('patch'));
-gulp.task('feature', inc('minor'));
-gulp.task('release', inc('major'));
-gulp.task('default', ['stamp', 'css', 'js'], function() {});
+gulp.task('default', ['css', 'js', 'html'], function() {});

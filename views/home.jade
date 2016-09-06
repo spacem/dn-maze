@@ -1,11 +1,27 @@
 extends layout
 
 block content
-  div.container
+  div.container#nav
+    div.row
+      ul.nav.nav-tabs
+        li.nav-tab.active
+          a(href="/")
+            span.glyphicon.glyphicon-wrench(aria-hidden="true")
+            span &nbsp; new skill build
+            
+    div.row
+      ul.nav.navbar-nav
+        each job0 in jobs.filter(function(j) { return j.JobNumber == 0 })
+          li.dropdown(class={active: line && job0 == line[0]})
+            a(href='javascript:void(0)')= job0.JobName
+              span.caret
+            ul.dropdown-menu
+              each job1 in jobs.filter(function(j) { return jobs[j.ParentJob] == job0 })
+                li.dropdown-header= job1.JobName
+                each job2 in jobs.filter(function(j) { return jobs[j.ParentJob] == job1 })
+                  li: a(href='#{region}/#{job2.EnglishName}-#{cap}')= job2.JobName
+
     div.row
       div.col-md-12
-        div.panel.panel-default
-          div.panel-heading= title
-          div.panel-body!= home_body
-          div.text-center
-            img.hidden-xs(src="images/3char.png")
+        div.panel-body.text-center!= home_body
+          img.hidden-xs(src="images/3char.png")

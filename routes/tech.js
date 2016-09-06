@@ -8,7 +8,7 @@ module.exports = function(configs) {
       db = configs.db,
       format = configs.format;
 
-  router.get('/tech/:job([a-z]+)', function(req, res) {
+  router.get('/' + configs.region + '/tech/:job([a-z]+)', function(req, res) {
     var job = db.FinalJobs[req.params.job];
     if (!job) throw format(lang.error.job_not_found, req.params.job)
 
@@ -20,6 +20,5 @@ module.exports = function(configs) {
       format: format
     });
   });
-
   return router;
 };

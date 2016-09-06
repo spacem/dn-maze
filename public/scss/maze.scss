@@ -144,6 +144,9 @@ $std-font-size: 14px;
 }
 
 .popover {
+    background-color: #333;
+    color: white;
+    
     width: 250px;
     font-size: 11px;
 
@@ -176,6 +179,8 @@ $std-font-size: 14px;
 .popover-title {
     text-align: center;
     font-size: 12px;
+      background-color: #8d8578;
+    color: white;
 }
 
 
@@ -257,19 +262,30 @@ body {
   color: #777;
 }
 
+.panel-body {
+	background-color: rgb(233,231,224);
+}
+
+.panel-default .panel-heading {
+  background-color: #8d8578;
+  background-image: none;
+}
+
 .panel-heading {
 	background-color: #070506;
-	opacity: 0.8;
-	filter: alpha(opacity=95);
-	filter: alpha(opacity=80);
+}
+
+#nav {
+	background-color: rgb(233,231,224);
 	border-color: #8d8578;
 	border-style: solid;
 	border-width: 5px;
 	border-radius: 10px;
+	border-top-width: 0px;
 }
 
 .panel {
-	background-color: rgb(233,231,224);
+	background-color: #070506;
 	border-color: #8d8578;
 	border-style: solid;
 	border-width: 5px;
@@ -290,4 +306,48 @@ a {
     border-style: solid;
     border-width: 5px;
     border-radius: 10px;
+}
+
+h3 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+
+.toggle-box button {
+float: left;
+display: block;
+height: 27px;
+width: 44px;
+margin-left: 1px;
+margin-right: 1px;
+border-style: none;
+font-size: 50%;
+}
+.dark-toggle {
+background: url(/images/dark_toggle.png) no-repeat center center;
+color: #8d8578;
+}
+.light-toggle {
+background: url(/images/light_toggle.png) no-repeat center center;
+color: white;
+}
+.toggle-text {
+background-color: #070506;
+float: left;
+display: block;
+height: 25px;
+color: white;
+border-style: none;
+font-size: 70%;
+border-color: #070506;
+border-style: solid;
+border-width: 3px;
+border-radius: 10px;
+}
+.toggle-box {
+display: inline;
+float: right;
+clear: right;
+background-color: #070506;
 }

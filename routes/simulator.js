@@ -44,12 +44,13 @@ module.exports = function(configs) {
   // don't repeatedly do this...
   var json_lang = JSON.stringify(lang['public']);
 
-  router.get('/:job([a-z]+)-:level([0-9]+)/:build([-_a-zA-Z0-9\.!\']{72,})', function(req, res) {
+  router.get('/' + configs.region + '/:job([a-z]+)-:level([0-9]+)/:build', function(req, res) {
+
     req.params.level = parseInt(req.params.level);
     if (req.params.level < 1 || req.params.level > db.Levels.length) throw format(lang.error.level_not_found, req.params.level)
     var job = db.FinalJobs[req.params.job];
     if (!job) throw format(lang.error.job_not_found, req.params.job)
-    if (req.params.build.length > 78) throw lang.error.build_too_long
+    // if (req.params.build.length > 78) throw lang.error.build_too_long
 
     var apply_type = 0, free = true;
     if (req.cookies) {
@@ -178,7 +179,10 @@ module.exports = function(configs) {
         throw lang.error.invalid_tech;
       }
 
-      if (level + maze.fn.count_techs(techs, id) > skill.MaxLevel) throw lang.error.max_level_exceeded;
+      if (level + maze.fn.count_techs(techs, id) > skill.MaxLevel) {
+        level = skill.MaxLevel - maze.fn.count_techs(techs, id);
+      }
+      
       var trueMax = get_skill_max(skill, req.params.level);
       if (level > trueMax) throw lang.error.max_level_exceeded;
       var tsp = get_skill_tsp(skill, level);
@@ -247,7 +251,7 @@ module.exports = function(configs) {
     var json_urls  = JSON.stringify({
       mainbar: maze.fn.url.mainbar(),
       border: maze.fn.url.uitemplatetexture('uit_gesturebutton'),
-      job: maze.fn.url.json(line[2].EnglishName)
+      job: maze.fn.url.json(configs.region + '/' + line[2].EnglishName)
     });
 
     res.render('simulator', {
@@ -265,7 +269,8 @@ module.exports = function(configs) {
       data: data,
       json_data: json_data,
       json_lang: json_lang,
-      urls: json_urls
+      urls: json_urls,
+      region: configs.region
     })
   })
 

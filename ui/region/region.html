@@ -1,0 +1,21 @@
+<div class="toggle-box">
+  <button 
+    ng-class="{'dark-toggle' : currentLocation != $parent.getDntLocation(), 'light-toggle' : currentLocation == $parent.getDntLocation()}" 
+    ng-click="$parent.setLocation(currentLocation)"
+    ng-repeat="currentLocation in ::getHostedFiles() track by currentLocation.region" 
+    title="{{::currentLocation.name}}">
+    {{::currentLocation.region}}
+  </button>
+</div>
+  <!-- <button class="toggle-text" ng-click="edit = true">&nbsp;{{getWorldName()}}&nbsp;</button> -->
+<div ng-if="edit" class="toggle-box">
+  <div class="toggle-text">language:</div>
+  
+  <button
+    ng-class="{'dark-toggle' : currentLocation != $parent.getTlocation(), 'light-toggle' : currentLocation == $parent.getTlocation()}" 
+    ng-click="$parent.setTLocation(currentLocation)" 
+    ng-repeat="currentLocation in ::getHostedFiles() track by currentLocation.region"
+    title="{{::currentLocation.name}}">
+    {{::currentLocation.region}}
+  </button>
+</div>

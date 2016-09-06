@@ -9,7 +9,9 @@ module.exports = function(configs) {
       db = configs.db,
       format = configs.format;
 
-  router.get('/', function(req, res) {
+  var json_lang = JSON.stringify(lang['public']);
+
+  router.get('/' + configs.region + '/', function(req, res) {
     res.render('home', {
       title: "dnskillsim - dragon nest skill simulator",
       fn: maze.fn,
@@ -18,20 +20,22 @@ module.exports = function(configs) {
       jobs: jobs,
       cap: db.Levels.length,
       format: format,
-      timestamp: maze.timestamp
+      timestamp: maze.timestamp,
+      json_lang: json_lang,
+      region: configs.region
     });
   });
-
-  router.get('/:job([a-z]+)', function(req, res) {
+  
+  router.get('/' + configs.region + '/:job([a-z]+)', function(req, res) {
     var job = db.FinalJobs[req.params.job];
     if (!job) throw format(lang.error.job_not_found, req.params.job)
-    res.redirect(302, '/' + req.params.job + '-' + db.Levels.length)
+    res.redirect(302, req.params.job + '-' + db.Levels.length)
   })
 
-  router.get('/:job([a-z]+)-:level([0-9]+)', function(req, res) {
+  router.get('/' + configs.region + '/:job([a-z]+)-:level([0-9]+)', function(req, res) {
     var job = db.FinalJobs[req.params.job];
     if (!job) throw format(lang.error.job_not_found, req.params.job)
-    res.redirect(301, '/' + req.params.job + '-' + req.params.level + '/' + default_build_path);
+    res.redirect(301, req.params.job + '-' + req.params.level + '/' + default_build_path);
   });
 
   return router;
