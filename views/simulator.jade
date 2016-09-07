@@ -7,17 +7,13 @@ block content
     div.row
       ul.nav.nav-tabs
         li.nav-tab
-          a(href="/")
+          a(href='/' + region)
             span.glyphicon.glyphicon-wrench(aria-hidden="true")
             span &nbsp; new skill build
         li.nav-tab.active
           a
             span.glyphicon.glyphicon-wrench(aria-hidden="true")
             span=' unnamed ' + line[2].JobName
-    if region == 'kdn'
-      div.row
-        div.col-xs-12 I do not have a KDN account so the best I could do for now was to deploy the latest data files with old skill descriptions and images.
-              
 
     div.modal#modal(tabindex='-1', role='dialog', aria-labeledby='warning', aria-hidden='true')
       div.modal-dialog: div.modal-content
@@ -69,7 +65,7 @@ mixin panel_header(job, index)
 
 mixin panel_body(job)
   div.panel-body
-    table.skill-table(style=fn.image.skilltree(job, version))
+    table.skill-table(style=fn.image.skilltree(job, version, region))
       each skillRow in job.SkillTree
         tr.skill-tr
           each skillID in skillRow
@@ -79,7 +75,7 @@ mixin panel_body(job)
 mixin awaken_panel_body(job)
   div.panel-body
     div.col-xs-6
-      table.skill-table(style=fn.image.skilltree(job, version))
+      table.skill-table(style=fn.image.skilltree(job, version, region))
         each skillRow in job.SkillTree
           tr.skill-tr
             each skillID in skillRow
