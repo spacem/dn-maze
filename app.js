@@ -25,7 +25,7 @@ setupRegion('na');
 setupRegion('cdn');
 setupRegion('ina');
 setupRegion('eu');
-// setupRegion('kdn');
+setupRegion('kdn');
 
 
 function setupRegion(region) {

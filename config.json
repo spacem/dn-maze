@@ -1,11 +1,12 @@
 {
     "db": "db.json",
     "server": "",
-    "static": "http://dnskillsim.heroku.com/public",
+    "static": "//spacem.github.io/dnskillsim/public",
     "uri": {
-        "mainbar": "$server/images/ui/mainbar",
-        "skill": "$server/images/ui/skill",
-        "uitemplatetexture": "$server/images/uitemplatetexture",
+        "mainbar": "$static/images/ui/mainbar",
+        "skill": "$static/images/ui/skill",
+        "uitemplatetexture": "$static/images/uitemplatetexture",
+        "image": "$static/images",
         "json": "$server/json",
         "js": "$server/js",
         "css": "$server/css"

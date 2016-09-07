@@ -7,7 +7,7 @@ function region($window, $location) {
   var alternativeFiles = {region: 'ALT', name: 'Alternative user specified files', url : ''};
   var hostedFiles =[
       {region: 'na', name: 'english files from nexon north america', url : 'https://dnna.firebaseapp.com'},
-      // {region: 'kdn', name: 'korean files from pupu', url : 'https://kdnfiles.firebaseapp.com'},
+      {region: 'kdn', name: 'korean files from pupu', url : 'https://kdnfiles.firebaseapp.com'},
       {region: 'cdn', name: 'chinese files from shanda', url : 'https://cdnfiles.firebaseapp.com'},
       {region: 'sea', name: 'south east asia - english files from cherry credits', url : 'https://seadnfiles.firebaseapp.com'},
       {region: 'eu', name: 'europe - english files from cherry credits', url : 'https://eufiles.firebaseapp.com'},

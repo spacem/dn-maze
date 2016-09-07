@@ -214,7 +214,7 @@ module.exports = function(configs) {
       sprites[id] = [skill.Sprite, skill.IconCol, skill.IconRow, i];
     }
 
-    if (j < build.length) throw lang.error.short_build_path
+    // if (j < build.length) throw lang.error.short_build_path
 
     // sum of sp checks
     if (job_sp[0] > job_max_sp[0] || job_sp[1] > job_max_sp[1]

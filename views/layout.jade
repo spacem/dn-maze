@@ -5,7 +5,7 @@ html
     meta(name="description", content="dnskillsim: dragon nest skill simulator")
     meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1")
     meta(http-equiv="X-UA-Compatible", content="IE=Edge")
-    link(rel="icon", type="image/png", href="/images/dnskillsim.png")
+    link(rel="icon", type="image/png", href=fn.url.image('dnskillsim.png'))
     title DN Skill Sim
     link(rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css")
     link(rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css")
@@ -20,7 +20,7 @@ html
             div.xs-col-12
               h3.header-title &nbsp;
                 a(href="/")
-                  img(src="/images/dnskillsim.png")
+                  img(src=fn.url.image('dnskillsim'))
                 small.hidden-xs &nbsp; dragon nest skill simulator
                 dngearsim-region(ng-controller="RegionCtrl")
                 dngearsim-region

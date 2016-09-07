@@ -1,10 +1,24 @@
 var $body = $('body');
 var $lang = lang.description;
+function popover_placement(popover, td) {
+  var parent = $(td).parent();
+  var childen = parent.parent().children();
+  if(childen.length <= 2) {
+    return 'left';
+  }
+  var index = childen.index(parent);
+  if(index >= 2) {
+    return 'left';
+  }
+  else {
+    return 'right';
+  }
+}
 function init_description(thiz) {
   $(thiz).popover({animation: false,
                    html: true,
                    trigger: 'manual',
-                   placement: 'auto left',
+                   placement: popover_placement,
                    container: $body})
          .on('mouseenter', $dpop.mouseenter)
          .on('mouseleave', $dpop.mouseleave)

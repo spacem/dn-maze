@@ -14,6 +14,10 @@ block content
           a
             span.glyphicon.glyphicon-wrench(aria-hidden="true")
             span=' unnamed ' + line[2].JobName
+    if region == 'kdn'
+      div.row
+        div.col-xs-12 I do not have a KDN account so the best I could do for now was to deploy the latest data files with old skill descriptions and images.
+              
 
     div.modal#modal(tabindex='-1', role='dialog', aria-labeledby='warning', aria-hidden='true')
       div.modal-dialog: div.modal-content
@@ -33,7 +37,7 @@ block content
 
       div.col-xs-12.col-sm-9
         div.form-inline: div.form-group
-          button#techs.btn.btn-sm.btn-default(type='button') Equipment
+          button#techs.btn.btn-sm.btn-default(type='button') Equip
           span &nbsp;
           button#free.btn.btn-sm(type='button', class={'btn-primary': data.Free, 'btn-default': !data.Free})= lang.mode.free
           button#strict.btn.btn-sm(type='button', class={'btn-primary': !data.Free, 'btn-default': data.Free})= lang.mode.strict

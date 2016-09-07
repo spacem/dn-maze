@@ -104,7 +104,7 @@ $std-font-size: 14px;
     background-size: 317px 510px;
     .skill-tr {
         .skill-td {
-            padding: 0 10px 28px 10px;
+            padding: 0 6px 28px 6px;
         }
 
         &:last-of-type .skill-td {
@@ -143,11 +143,25 @@ $std-font-size: 14px;
     }
 }
 
+.popover.right .arrow:after {
+    border-right-color: #333;
+    border-left-color: #333;
+}
+
+.popover.left .arrow:after {
+    border-right-color: #333;
+    border-left-color: #333;
+}
+
+.popover-content {
+    padding: 4px;
+}
+
 .popover {
     background-color: #333;
     color: white;
     
-    width: 250px;
+    width: 180px;
     font-size: 11px;
 
     .divider {
@@ -264,6 +278,8 @@ body {
 
 .panel-body {
 	background-color: rgb(233,231,224);
+	padding-left: 0px;
+	padding-right: 0px;
 }
 
 .panel-default .panel-heading {
