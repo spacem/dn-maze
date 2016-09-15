@@ -1,7 +1,7 @@
 {
     "db": "db.json",
     "server": "",
-    "static": "//spacem.github.io/dnskillsim/public",
+    "static": "//dnskillsim.herokuapp.com",
     "uri": {
         "mainbar": "$static/images/ui/mainbar",
         "skill": "$static/images/ui/skill",
