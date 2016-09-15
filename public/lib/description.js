@@ -259,10 +259,12 @@ var $dpop = {
 function desc_format(str, params) {
   if (!str) return str;
 
-  params = params.split(',').map($d.params);
-
-  for (var i = 0; i < params.length; i++) {
-    str = str.replace('{' + i + '}', params[i]);
+  if(params) {
+    params = params.split(',').map($d.params);
+  
+    for (var i = 0; i < params.length; i++) {
+      str = str.replace('{' + i + '}', params[i]);
+    }
   }
 
   var c = 0, w = 0, p = 0, newStr = "", startPos = 0;
