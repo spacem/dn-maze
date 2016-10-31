@@ -1,7 +1,7 @@
 {
     "db": "db.json",
     "server": "",
-    "static": "//dnskillsim.herokuapp.com",
+    "static": "",
     "uri": {
         "mainbar": "$static/images/ui/mainbar",
         "skill": "$static/images/ui/skill",
