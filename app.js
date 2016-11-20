@@ -20,14 +20,14 @@ var lang = require('./lib/lang');
 var format = require('./lib/format');
 lang = lang('na');
 
-setupRegion('sea');
-setupRegion('na');
-setupRegion('cdn');
-setupRegion('ina');
-setupRegion('eu');
-setupRegion('kdn');
-setupRegion('tw', 'https://twdnfiles.firebaseapp.com/maze');
+setupRegion('sea', 'https://seadnfiles.firebaseapp.com/maze');
+setupRegion('na', 'https://dnna.firebaseapp.com/maze');
+setupRegion('eu', 'https://eufiles.firebaseapp.com/maze');
+setupRegion('ina', 'https://inafiles-da491.firebaseapp.com/maze');
 setupRegion('th', 'https://thdnfiles.firebaseapp.com/maze');
+setupRegion('tw', 'https://twdnfiles.firebaseapp.com/maze');
+setupRegion('cdn', 'https://cdnfiles.firebaseapp.com/maze');
+setupRegion('kdn', 'https://kdnfiles.firebaseapp.com/maze');
 
 
 function setupRegion(region, url) {
@@ -39,10 +39,10 @@ function setupRegion(region, url) {
       headers: {'User-Agent': 'request'}
     }, (err, res, data) => {
       if (err) {
-        console.log('JSON Error:', err);
+        console.log(url + ' JSON Error:', err);
       }
       else if (res.statusCode !== 200) {
-        console.log('JSON Status:', res.statusCode);
+        console.log(url + ' JSON Status:', res.statusCode);
       }
       else {
         setupRegionDb(region, url, data);
