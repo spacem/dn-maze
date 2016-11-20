@@ -1,5 +1,4 @@
 {
-    "db": "db.json",
     "server": "",
     "static": "",
     "uri": {
@@ -7,7 +6,6 @@
         "skill": "$static/images/ui/skill",
         "uitemplatetexture": "$static/images/uitemplatetexture",
         "image": "$static/images",
-        "json": "$server/json",
         "js": "$server/js",
         "css": "$server/css"
     }

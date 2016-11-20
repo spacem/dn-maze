@@ -1,4 +1,4 @@
-// export express
+var request = require('request');
 var express = require('express');
 var app = express();
 module.exports = app;
@@ -26,10 +26,38 @@ setupRegion('cdn');
 setupRegion('ina');
 setupRegion('eu');
 setupRegion('kdn');
+setupRegion('tw', 'https://twdnfiles.firebaseapp.com/maze');
+setupRegion('th', 'https://thdnfiles.firebaseapp.com/maze');
 
 
-function setupRegion(region) {
-  var db = require('./public/json/' + region + '/db.json');
+function setupRegion(region, url) {
+  if(url) {
+    
+    request.get({
+      url: url + '/db.json',
+      json: true,
+      headers: {'User-Agent': 'request'}
+    }, (err, res, data) => {
+      if (err) {
+        console.log('JSON Error:', err);
+      }
+      else if (res.statusCode !== 200) {
+        console.log('JSON Status:', res.statusCode);
+      }
+      else {
+        setupRegionDb(region, url, data);
+      }
+    });
+  }
+  else {
+    var db = require('./public/json/' + region + '/db.json');
+    setupRegionDb(region, url, db);
+  }
+  
+}
+  
+function setupRegionDb(region, url, db) {
+  
   var jobs = [];
   db.FinalJobs = {};
   for (var i in db.Jobs) {
@@ -45,7 +73,8 @@ function setupRegion(region) {
     jobs: jobs,
     db: db,
     format: format,
-    region: region
+    region: region,
+    url: url
   }
   
   // routes

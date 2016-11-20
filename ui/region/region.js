@@ -1,36 +1,50 @@
 angular.module('dnsim').controller('RegionCtrl', 
-  ['$scope','$timeout','$location','region',
-  function($scope,$timeout,$location,region) {
+  ['$timeout','$location','region',
+  function($timeout,$location,region) {
     'use strict';
+    
+    var vm = this;
 
+    vm.override = region.getOverride();
     region.init();
       
-    $scope.region = region;
+    vm.region = region;
+    vm.tHoverLocation = region.tlocation;
+    vm.hoverLocation = region.dntLocation;
+    vm.edit = (region.dntLocation == null);
     
-    $scope.getDntLocation = function() {
+    vm.getDntLocation = function() {
       return region.dntLocation;
-    }
-    $scope.getTlocation = function() {
+    };
+    vm.getTlocation = function() {
       return region.tlocation;
-    }
+    };
      
-    $scope.getHostedFiles = function() {
+    vm.getHostedFiles = function() {
       // console.log('getting hosted files');
       return region.hostedFiles;
-    }
+    };
     
-    $scope.setTLocation = function(location) {
+    vm.setTLocation = function(location) {
       region.setTLocation(location);
-      $scope.edit = false;
-    }
+      vm.edit = false;
+    };
     
-    $scope.setLocation = function(location) {
+    vm.setLocation = function(location) {
       region.setLocation(location);
-    }
+      vm.edit = false;
+    };
+
+    vm.setOverride = function(value) {
+      region.setOverride(value);
+      vm.override = value;
+      vm.edit = value;
+    };
   }
 ])
 .directive('dngearsimRegion', function() {
   return {
-    templateUrl: 'ui/region/region.html'
+    templateUrl: 'ui/region/region.html',
+    controllerAs: 'ctrl',
   };
 });

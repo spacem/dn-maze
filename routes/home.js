@@ -10,6 +10,21 @@ module.exports = function(configs) {
       format = configs.format;
 
   var json_lang = JSON.stringify(lang['public']);
+  
+  router.get('/', function(req, res) {
+    res.render('home', {
+      title: "dnskillsim - dragon nest skill simulator",
+      fn: maze.fn,
+      lang: lang['public'],
+      home_body: lang.home_body,
+      jobs: jobs,
+      cap: db.Levels.length,
+      format: format,
+      timestamp: maze.timestamp,
+      json_lang: json_lang,
+      region: configs.region
+    });
+  });
 
   router.get('/' + configs.region + '/', function(req, res) {
     res.render('home', {

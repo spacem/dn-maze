@@ -3,10 +3,6 @@ var router = express.Router();
 
 var default_build_path = Array(73).join('-');
 module.exports = function(configs) {
-
-  router.get('/', function(req, res) {
-    res.redirect(302, '/sea');
-  });
   
   router.get('/:job([a-z]+)-:level([0-9]+)/:build', function(req, res) {
     res.redirect(302, '/sea/' + req.params.job + '-' + req.params.level + '/' + req.params.build)

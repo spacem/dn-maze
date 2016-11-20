@@ -1,21 +1,103 @@
 <div class="toggle-box">
   <button 
-    ng-class="{'dark-toggle' : currentLocation != $parent.getDntLocation(), 'light-toggle' : currentLocation == $parent.getDntLocation()}" 
-    ng-click="$parent.setLocation(currentLocation)"
-    ng-repeat="currentLocation in ::getHostedFiles() track by currentLocation.region" 
-    title="{{::currentLocation.name}}">
-    {{::currentLocation.region}}
+    class="light-toggle toggle-box-button"
+    ng-click="ctrl.edit = !ctrl.edit;"
+    title="{{ctrl.getDntLocation().name}}">
+    {{ctrl.getDntLocation().region}}
   </button>
 </div>
   <!-- <button class="toggle-text" ng-click="edit = true">&nbsp;{{getWorldName()}}&nbsp;</button> -->
-<div ng-if="edit" class="toggle-box">
-  <div class="toggle-text">language:</div>
+<div ng-if="ctrl.edit" class="toggle-box">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <br />
+        select region
+      </div>
+    </div>
+    <div class="row" ng-repeat="currentLocation in ::ctrl.getHostedFiles() track by currentLocation.region">
+      <a
+        ng-href="#"
+        class="region-hover"
+        ng-click="ctrl.setLocation(currentLocation)"
+        ng-mouseover="ctrl.hoverLocation = currentLocation"
+        ng-mouseleave="ctrl.hoverLocation = ctrl.getDntLocation()">
+        
+        <div class="col-xs-10 col-sm-11 text-right toggle-text">
+          {{::currentLocation.name}}
+        </div>
+        <div class="col-xs-2 col-sm-1">
   
-  <button
-    ng-class="{'dark-toggle' : currentLocation != $parent.getTlocation(), 'light-toggle' : currentLocation == $parent.getTlocation()}" 
-    ng-click="$parent.setTLocation(currentLocation)" 
-    ng-repeat="currentLocation in ::getHostedFiles() track by currentLocation.region"
-    title="{{::currentLocation.name}}">
-    {{::currentLocation.region}}
-  </button>
+          <button
+            class="toggle-box-button"
+            ng-class="{'dark-toggle' : currentLocation != ctrl.hoverLocation, 'light-toggle' : currentLocation == ctrl.hoverLocation}" 
+            ng-click="ctrl.setLocation(currentLocation)"
+            title="{{::currentLocation.name}}">
+            {{::currentLocation.region}}
+          </button>
+        </div>
+      </a>
+    </div>
+    <!--
+    <div class="row">
+      <div class="col-xs-12z">
+        <br />
+        translation override
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-6 col-sm-10">
+      </div>
+      <div class="col-xs-3 col-sm-1">
+        <button
+          class="toggle-box-button"
+          ng-class="{'dark-toggle' : !ctrl.override, 'light-toggle' : ctrl.override}" 
+          ng-click="ctrl.setOverride(true)"
+          title="yes">
+          yes
+        </button>
+      </div>
+      <div class="col-xs-3 col-sm-1">
+        <button
+          class="toggle-box-button"
+          ng-class="{'dark-toggle' : ctrl.override, 'light-toggle' : !ctrl.override}" 
+          ng-click="ctrl.setOverride(false)"
+          title="no">
+          no
+        </button>
+      </div>
+    </div>
+    <div class="row" ng-if="ctrl.override">
+      <div class="col-xs-12">
+        <br />
+        translations
+      </div>
+    </div>
+    <div class="row" ng-repeat="currentLocation in ::ctrl.getHostedFiles() track by currentLocation.region" ng-if="ctrl.override">
+      <a
+        ng-href="#"
+        class="region-hover"
+        ng-click="ctrl.setTLocation(currentLocation)"
+        ng-mouseover="ctrl.tHoverLocation = currentLocation"
+        ng-mouseleave="ctrl.tHoverLocation = ctrl.getTlocation()">
+        
+        <div class="col-xs-10 col-sm-11 text-right toggle-text">
+          {{::currentLocation.name}}
+        </div>
+        <div class="col-xs-2 col-sm-1">
+  
+          <button
+            class="toggle-box-button"
+            ng-class="{'dark-toggle' : currentLocation != ctrl.tHoverLocation, 'light-toggle' : currentLocation == ctrl.tHoverLocation}" 
+            ng-click="ctrl.setTLocation(currentLocation)"
+            title="{{::currentLocation.name}}">
+            {{::currentLocation.region}}
+          </button>
+        </div>
+      </a>
+    </div>
+    -->
+    
+    <br />
+  </div>
 </div>

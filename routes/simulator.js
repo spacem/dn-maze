@@ -247,11 +247,16 @@ module.exports = function(configs) {
     };
 
     var json_data = JSON.stringify(data);
+    
+    var jobUrl = '/json/' + configs.region;
+    if(configs.url) {
+      jobUrl = configs.url;
+    }
 
     var json_urls  = JSON.stringify({
       mainbar: maze.fn.url.mainbar(),
       border: maze.fn.url.uitemplatetexture('uit_gesturebutton'),
-      job: maze.fn.url.json(configs.region + '/' + line[2].EnglishName)
+      job: jobUrl + '/' + line[2].EnglishName + '.json'
     });
 
     res.render('simulator', {
