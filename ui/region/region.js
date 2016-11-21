@@ -1,6 +1,6 @@
 angular.module('dnsim').controller('RegionCtrl', 
-  ['$timeout','$location','region',
-  function($timeout,$location,region) {
+  ['$timeout','$location','region','$http',
+  function($timeout,$location,region,$http) {
     'use strict';
     
     var vm = this;
@@ -12,6 +12,25 @@ angular.module('dnsim').controller('RegionCtrl',
     vm.tHoverLocation = region.tlocation;
     vm.hoverLocation = region.dntLocation;
     vm.edit = (region.dntLocation == null);
+    vm.dntVersion = '';
+    setDntVersion();
+    
+    function setDntVersion() {
+      // console.log('setting version for ', vm.region.dntLocation);
+      if(vm.region.dntLocation && vm.region.dntLocation.url) {
+        $http.get(vm.region.dntLocation.url + '/Version.cfg').then(function(res) {
+          if(res && res.data) {
+            var newLineDetails = res.data.split('\r\n');
+            if(newLineDetails.length) {
+              var spaceDetails = newLineDetails[0].split(' ');
+              if(spaceDetails.length > 1) {
+                vm.dntVersion = 'v' + spaceDetails[1];
+              }
+            }
+          }
+        });
+      }
+    }
     
     vm.getDntLocation = function() {
       return region.dntLocation;
@@ -33,6 +52,7 @@ angular.module('dnsim').controller('RegionCtrl',
     vm.setLocation = function(location) {
       region.setLocation(location);
       vm.edit = false;
+      setDntVersion();
     };
 
     vm.setOverride = function(value) {
