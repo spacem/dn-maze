@@ -1,8 +1,8 @@
 (function () {
 'use strict';
 
-angular.module('dnsim').factory('region', ['$window','$location', region]);
-function region($window, $location) {
+angular.module('dnsim').factory('region', ['translations','dntReset','dntData','$window','$timeout', region]);
+function region(translations,dntReset,dntData,$window,$timeout) {
   
   var alternativeFiles = {region: 'ALT', name: 'Alternative user specified files', url : ''};
   var hostedFiles =[
@@ -74,16 +74,57 @@ function region($window, $location) {
       var currentLocation = getLocationFromUrl();
       if(this.dntLocation && this.dntLocation.region != currentLocation) {
         var parts = $window.location.href.replace('//', '::').split('/');
-        var newUrl = $window.location.href.substring(0, parts[0].length) + '/' + this.dntLocation.region;
-        for(var i=2;i<parts.length;++i) {
-          newUrl += '/' + parts[i];
+        if(parts.length > 1 && parts[1] == 'dnskillsim') {
+          console.log('running github', location);
+          this.setTLocation(location);
         }
-        $window.location.href = newUrl;
+        else {
+          console.log('running on heroku');
+          var newUrl = $window.location.href.substring(0, parts[0].length) + '/' + this.dntLocation.region;
+          for(var i=2;i<parts.length;++i) {
+            newUrl += '/' + parts[i];
+          }
+          $window.location.href = newUrl;
+        }
+      }
+    },
+    
+    setTLocation: function(location) {
+      
+      if(location != this.tlocation) {
+        
+        this.tlocation = location;
+        sessionStorage.removeItem('UIStrings');
+        localStorage.removeItem('UIStrings_file');
+        dntReset();
+        translations.reset();
+        if(location) {
+          var override = this.getOverride();
+          translations.small = !override;
+          translations.location = this.tlocation.url;
+          translations.init(function() {}, function() {
+            // $route.reload();
+          });
+        }
       }
     },
     
     init: function() {
-      this.setLocationByName(getLocationFromUrl());
+      var urlLocation = getLocationFromUrl();
+      if(urlLocation) {
+        if(urlLocation == 'dnskillsim') {
+          this.tlocation = this.dntLocation;
+          translations.small = true;
+          if(this.tlocation) {
+            translations.location = this.tlocation.url;
+          }
+          dntData.setLocation(this.dntLocation);
+          translations.init(function() {}, $timeout);
+        }
+        else {
+          this.setLocationByName(urlLocation);
+        }
+      }
     },
     
     getOverride: function() {

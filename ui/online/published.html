@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-xs-12" ng-if="!ctrl.profile || !ctrl.build">
+    loading...
+  </div>
+  <div class="col-xs-12" ng-if="ctrl.profile && ctrl.build">
+    <h3>
+      <dnsim-job-icon item="ctrl.getJob(ctrl.build)"></dnsim-job-icon>
+      {{ctrl.buildName}} 
+      <span ng-if="ctrl.build.guild">[{{ctrl.build.guild}}]</span>
+      <small>
+        <span ng-if="ctrl.build.region">in {{ctrl.build.region}}</span>
+        <span ng-if="ctrl.build.about">
+          <br />
+          <em>
+            {{ctrl.build.about}}
+          </em>
+        </span>
+        <br />
+      </small>
+    </h3>
+    
+    <p>
+      created by: <a ng-href="profile/?uid={{ctrl.uid}}">{{ctrl.profile.name || 'unnamed user'}}</a>
+      <br />
+      <em>{{ctrl.profile.about}}</em>
+    </p>
+    
+    <a ng-href="{{ctrl.getBuildLink(ctrl.build)}}">
+      view build
+    </a>
+  </div>
+</div>

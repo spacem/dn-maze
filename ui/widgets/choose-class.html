@@ -1,0 +1,32 @@
+<div class="row" ng-if="!ctrl.job && !ctrl.bJob && ctrl.getBaseJobs().length > 0">
+  <div class="hidden-xs col-sm-4">&nbsp;</div>
+  <div class="col-xs-12 col-sm-8">
+    <br />
+    <label>choose the character class</label>
+  </div>
+  <div class="hidden-xs col-sm-4">&nbsp;</div>
+  <div class="col-xs-12 col-sm-4">
+    <button class="btn btn-default btn-block" ng-repeat="bJob in ctrl.getBaseJobs()" ng-click="ctrl.bJob = bJob">
+      <span class="class-image class-{{bJob}}"></span>
+      {{ctrl.getJobName(bJob)}}
+    </button>
+  </div>
+</div>
+<div class="row" ng-show="!ctrl.job && ctrl.bJob">
+  <div class="hidden-xs col-sm-4">&nbsp;</div>
+  <div class="col-xs-12 col-sm-8">
+    <br />
+    <label>choose the specialisation</label>
+  </div>
+  <div class="hidden-xs col-sm-4">&nbsp;</div>
+  <div class="col-xs-12 col-sm-4">
+    <button class="btn btn-default btn-block" ng-repeat="fJob in ctrl.getFinalJobs()" ng-click="ctrl.setJob(fJob)">
+      <dnsim-job-icon item="::fJob"></dnsim-job-icon>
+      {{fJob.name}}
+    </button>
+    <button class="btn btn-default btn-block" ng-click="ctrl.bJob = null">
+      <span class="job-icon">&nbsp;</span>
+      &lt; different class
+    </button>
+  </div>
+</div>

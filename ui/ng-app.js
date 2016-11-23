@@ -3,6 +3,20 @@
 
 // templates are imported via gulp job
 angular.module('templates', []);
-angular.module('dnsim', ['templates']);
+angular.module('dnsim', ['ngRoute','templates']);
+
+var baseElement = angular.element(document).find('base');
+
+if(baseElement.length) {
+    angular.module('dnsim').config(['$locationProvider', setupHtml5Mode]);
+}
+
+function setupHtml5Mode($locationProvider) {
+    $locationProvider.html5Mode({
+        enabled: true,
+        requireBase: true,
+        rewriteLinks: true
+    });
+};
 
 })();

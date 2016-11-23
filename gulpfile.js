@@ -5,9 +5,10 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     git = require('gulp-git'),
     bump = require('gulp-bump'),
-    tag = require('gulp-tag-version');
-
-var fs = require('fs');
+    tag = require('gulp-tag-version'),
+    sourcemaps = require('gulp-sourcemaps'),
+    plumber = require('gulp-plumber'),
+    fs = require('fs');
 
 var css_src = './public/scss/*.scss';
 var js_src = [
@@ -15,6 +16,8 @@ var js_src = [
   './public/lib/skill.js',
   './public/lib/description.js',
   './public/lib/tech.js',
+];
+var js_extra_src = [
   './ui/ng-app.js',
   './services/**/*.js',
   './ui/**/*.js',
@@ -30,15 +33,22 @@ gulp.task('css', function () {
 
 gulp.task('js', function() {
   return gulp.src(js_src)
-    .pipe(concat('maze.js'))
-    .pipe(rename({suffix: '.min'}))
+    .pipe(plumber())
+    .pipe(sourcemaps.init())
+    .pipe(concat('maze.min.js'))
+    .pipe(sourcemaps.write('.'))
     // .pipe(uglify())
     .pipe(gulp.dest('./public/js'))
 });
 
-gulp.task('watch', function() {
-  gulp.watch(css_src, ['css']);
-  gulp.watch(js_src, ['js']);
+gulp.task('js-extra', function() {
+  return gulp.src(js_extra_src)
+    .pipe(plumber())
+    .pipe(sourcemaps.init())
+    .pipe(concat('extras.min.js'))
+    .pipe(sourcemaps.write('.'))
+    // .pipe(uglify())
+    .pipe(gulp.dest('./public/js'))
 });
 
 // html templates
@@ -63,4 +73,4 @@ function logChange(event) {
   console.log('*** ' + event.path + ' was ' + event.type + ' ***');
 }
 
-gulp.task('default', ['css', 'js', 'html'], function() {});
+gulp.task('default', ['css', 'js', 'js-extra', 'html'], function() {});

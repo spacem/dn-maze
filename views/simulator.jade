@@ -5,15 +5,7 @@ block custom_script
 block content
   div.container#nav
     div.row
-      ul.nav.nav-tabs
-        li.nav-tab
-          a(href='/' + region)
-            span.glyphicon.glyphicon-wrench(aria-hidden="true")
-            span &nbsp; new skill build
-        li.nav-tab.active
-          a
-            span.glyphicon.glyphicon-wrench(aria-hidden="true")
-            span=' unnamed ' + line[2].JobName
+      dngearsim-build-menu(job-name=line[2].JobName.toLowerCase())
 
     div.modal#modal(tabindex='-1', role='dialog', aria-labeledby='warning', aria-hidden='true')
       div.modal-dialog: div.modal-content

@@ -1,0 +1,34 @@
+<dnsim-loading>
+  <div class="row">
+    <div class="col-xs-12" ng-if="ctrl.profile">
+      <h3>viewing builds for:<small> {{ctrl.profile.name || 'unnamed user'}}</small>
+      </h3>
+      <p>{{ctrl.profile.about}}</p>
+    </div>
+    <div class="col-xs-12" ng-if="!ctrl.profile || !ctrl.storedBuilds">
+      loading...
+    </div>
+    
+    <div class="col-xs-12" ng-if="ctrl.storedBuilds" ng-repeat="(buildName, build) in ctrl.storedBuilds">
+      <a class="btn btn-link btn-block group-header-btn" ng-href="{{ctrl.getBuildLink(ctrl.storedBuilds[buildName])}}">
+        <h3 class="text-left">
+          <dnsim-job-icon item="ctrl.getJob(ctrl.storedBuilds[buildName])"></dnsim-job-icon>
+          {{buildName}} 
+          <span ng-if="ctrl.storedBuilds[buildName].guild">[{{ctrl.storedBuilds[buildName].guild}}]</span>
+          <small>
+            <span ng-if="ctrl.storedBuilds[buildName].region">in {{ctrl.storedBuilds[buildName].region}}</span>
+            <span ng-if="ctrl.storedBuilds[buildName].about">
+              <br />
+              <em>
+                {{ctrl.storedBuilds[buildName].about}}
+              </em>
+            </span>
+            <br />
+          </small>
+        </h3>
+        
+      </a>
+    </div>
+  </div>
+  
+</dnsim-loading>

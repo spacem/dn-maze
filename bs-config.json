@@ -1,0 +1,10 @@
+{
+  "port": 8080,
+  "files": [
+    "min/app.min.js",
+    "index.html",
+    "dngearsim.css",
+    "app.js"],
+  "ghostMode": false,
+  "server": ".."
+}

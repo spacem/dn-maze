@@ -5,7 +5,7 @@ html
     meta(name="description", content="dnskillsim: dragon nest skill simulator")
     meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1")
     meta(http-equiv="X-UA-Compatible", content="IE=Edge")
-    link(rel="icon", type="image/png", href=fn.url.image('dnskillsim'))
+    link(rel="icon", type="image/png", href=fn.url.image('dnskillsim_icon'))
     title DN Skill Sim
     link(rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css")
     link(rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css")
@@ -17,10 +17,15 @@ html
     
     block content
     script(type='text/javascript', src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js")
+    
     script(type='text/javascript', src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js")
     script(type='text/javascript', src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js")
+    script(type='text/javascript', src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.min.js")
     script(type='text/javascript') var lang=!{json_lang}
+    
+    script(type='text/javascript', src="//spacem.github.io/dngearsim/min/dntviewer.min.js")
     script(type='text/javascript', src="/js/maze.min.js")
+    script(type='text/javascript', src="/js/extras.min.js")
     script(type='text/javascript', src="/js/templates.min.js")
     block custom_script
     

@@ -1,0 +1,16 @@
+<div class="col-xs-12" ng-if="loadError">
+  <br />
+  data files cannot be loaded
+</div>
+<div class="col-xs-12" ng-if="noRegion">
+  <br />
+  you must select a region
+</div>
+<div class="col-xs-12 loading" ng-if="!loadError && !noRegion && (numLoading || alsoShowFor)">
+</div>
+<div class="col-xs-12 text-center" ng-if="!loadError && !noRegion && numLoading">
+  loading ({{(1+totalToLoad-numLoading) + '/' + totalToLoad}})
+  <br /><br /><br />
+</div>
+
+<ng-transclude ng-show="!numLoading && !noRegion && !alsoShowFor" />

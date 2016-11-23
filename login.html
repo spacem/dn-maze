@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="dnskillsim: dragon nest skill simulator">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<link rel="icon" type="image/png" href="public/images/dnskillsim_icon.png">
+
+<title>dnskillsim login</title>
+<script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyC-Mckgho1xAI2SQzsKnpsr2ObDKOhdSrE",
+    authDomain: "dngearsim.firebaseapp.com",
+    databaseURL: "https://dngearsim.firebaseio.com",
+    storageBucket: "dngearsim.appspot.com",
+  };
+  firebase.initializeApp(config);
+</script>
+  <script src="//www.gstatic.com/firebasejs/ui/live/0.4/firebase-ui-auth.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/live/0.4/firebase-ui-auth.css" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"></link>
+  <link type="text/css" rel="stylesheet" href="dngearsim.css" />
+  <script type="text/javascript">
+    // FirebaseUI config.
+    var uiConfig = {
+      'signInSuccessUrl': '.#/publish',
+      'signInOptions': [
+        // Leave the lines as is for the providers you want to offer your users.
+        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+        firebase.auth.EmailAuthProvider.PROVIDER_ID
+      ],
+      // Terms of service url.
+      'tosUrl': '<your-tos-url>',
+      'callbacks': {
+        'signInSuccess': function(currentUser, credential, redirectUrl) {
+          return true;
+        }
+      }
+    };
+
+    // Initialize the FirebaseUI Widget using Firebase.
+    var ui = new firebaseui.auth.AuthUI(firebase.auth());
+    // The start method will wait until the DOM is loaded.
+    ui.start('#firebaseui-auth-container', uiConfig);
+  </script>
+</head>
+  <body>
+    
+<div id="head" class="container-fluid chunkyness">
+  <div class="row login">
+    <div class="xs-col-12">
+      <div class="container">
+        <div class="row">
+          <div class="xs-col-12">
+            <h3 class="header-title">
+              &nbsp;<a href="/dnskillsim"><img src="public/images/dnskillsim.png" /></a> <small>dragon nest skill simulator</small>
+            </h3>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div>
+            <p class="text-right">
+              <script>
+                function hideReset() {
+                  document.getElementById('reset').style.visibility = 'hidden';
+                  showMessage('sent');
+                }
+                function showMessage(message) {
+                  document.getElementById('message').style.visibility = 'visible';
+                  document.getElementById('message').innerHTML = message;
+                }
+              </script>
+              
+              <a href=".">skip log in</a><br />
+              <button class="btn btn-link" onclick="document.getElementById('reset').style.visibility = 'visible'"> reset password </button><br />
+              <span id="reset" style="visibility : hidden">
+                <input id="email" value="username@email"></input><br />
+                <button class="btn btn-defualt" onclick="firebase.auth().sendPasswordResetEmail(document.getElementById('email').value).then(hideReset).catch(showMessage)">reset</button>
+              </span><br />
+              <span id="message"></span>
+            </p>
+          </div>
+      </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="firebaseui-auth-container">
+</div>
+  
+<footer>
+  <div class="hidden-xs container-fluid chunkyness navbar-fixed-bottom">
+  <div class="container text-right">
+    <a href="https://discord.gg/011C92KwJWoCfRcEY">join discord chatroom</a> |
+    <a href="https://www.facebook.com/dngearsim">facebook page</a> |
+    <a href="https://github.com/spacem/dngearsim">browse source code</a>
+  </div>
+  </div>
+</footer>
+  </body>
+</html>
