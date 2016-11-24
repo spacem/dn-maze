@@ -58,7 +58,7 @@
         
           <h3>
           <small>
-          Level 93 {{ctrl.getBuildJobName(ctrl.build)}}
+          Level 93 {{ctrl.build.region}} {{ctrl.getBuildJobName(ctrl.build)}}
           </small>
           <br />
             <dnsim-job-icon item="ctrl.getJob(ctrl.build)">
@@ -84,7 +84,6 @@
           </div>
           <div class="col-xs-12 text-right">
             <br />
-            <button class="btn btn-default" ng-click="ctrl.publishBuild = null">cancel</button>
             <button class="btn btn-default" ng-click="ctrl.save()">publish</button>
           </div>
         </div>
