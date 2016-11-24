@@ -26,7 +26,33 @@
     </p>
     
     <a ng-href="{{ctrl.getBuildLink(ctrl.build)}}">
-      view build
+      view this build in the simulator
     </a>
+    <br /><br />
+  </div>
+  <div class="col-xs-11 col-sm-4 col-md-2" style="color: rgb(233,231,224);font-size:15.6px;width:190px;height:160px" ng-if="ctrl.build">
+    <div class="row chunkyness">
+       <div class="col-xs-3" style="border:0.5px dotted" ng-repeat="num in ctrl.baseSkillNums track by $index">
+         <span ng-if="!(num > 0)">&nbsp;</span>{{num}}
+        </div>
+    </div>
+    <br />
+  </div>
+  <div class="col-xs-1"></div>
+  <div class="col-xs-11 col-sm-4 col-md-2" style="color: rgb(233,231,224);font-size:15.6px;width:190px;height:160px" ng-if="ctrl.build">
+    <div class="row chunkyness">
+       <div class="col-xs-3" style="border:0.5px dotted" ng-repeat="num in ctrl.specSkillNums track by $index">
+         <span ng-if="!(num > 0)">&nbsp;</span>{{num}}
+        </div>
+    </div>
+    <br />
+  </div>
+  <div class="col-xs-1"></div>
+  <div class="col-xs-11 col-sm-4 col-md-2" style="color: rgb(233,231,224);font-size:15.6px;width:190px;height:160px" ng-if="ctrl.build">
+    <div class="row chunkyness">
+       <div class="col-xs-3" style="border:0.5px dotted" ng-repeat="num in ctrl.finalSkillNums track by $index">
+         <span ng-if="!(num > 0)">&nbsp;</span>{{num}}
+        </div>
+    </div>
   </div>
 </div>

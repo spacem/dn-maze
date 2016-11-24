@@ -76,6 +76,7 @@ function region(translations,dntReset,dntData,$window,$timeout) {
         var parts = $window.location.href.replace('//', '::').split('/');
         if(parts.length > 1 && parts[1] == 'dnskillsim') {
           console.log('running github', location);
+          localStorage.setItem('lastDNTRegion', location.region);
           this.setTLocation(location);
         }
         else {

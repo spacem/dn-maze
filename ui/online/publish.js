@@ -20,23 +20,35 @@ function publish($location, onlineService, $routeParams, region, jobs) {
   onlineService.login().then(function(user) {
     getSavedBuilds();
     getProfile();
-    getCurrentBuild();
+      
+    jobs.init(function() {
+      
+    }, function() {
+      getCurrentBuild();
+    });
   });
-  
-  jobs.init(function() {
-    
-  }, function() {
-  });
+
   
   function getCurrentBuild() {
-    vm.build = {
-      build: sessionStorage.getItem('current_skill_build'),
-      job: sessionStorage.getItem('current_skill_build_job'),
-      region: sessionStorage.getItem('current_skill_build_region'),
-      name: 'new build'
-    };
     
-    if(!vm.build.build || !vm.build.job || !vm.build.region) {
+    var englishJobName = sessionStorage.getItem('current_skill_build_job');
+    if(englishJobName) {
+      var job = jobs.getByEnglishName(englishJobName.toUpperCase());
+      if(job) {
+        
+        vm.build = {
+          build: sessionStorage.getItem('current_skill_build'),
+          job: job.id,
+          region: sessionStorage.getItem('current_skill_build_region'),
+          name: 'new build'
+        };
+  
+        if(!vm.build.build || !vm.build.job || !vm.build.region) {
+          vm.build = null;
+        }
+      }
+    }
+    else {
       vm.build = null;
     }
   }
