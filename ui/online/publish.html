@@ -13,8 +13,7 @@
     <br /><br />
   </div>
   <div class="col-xs-12">
-    <button class="btn btn-link" ng-disabled="ctrl.show == 'profile' || !ctrl.show" ng-click="ctrl.show = 'profile'">profile</button> |
-    <button class="btn btn-link" ng-disabled="ctrl.show == 'builds'" ng-click="ctrl.show = 'builds'">builds</button> |
+    <button class="btn btn-link" ng-disabled="ctrl.show == 'profile' || !ctrl.show" ng-click="ctrl.show = 'profile'">publish</button> |
     <button class="btn btn-link" ng-disabled="ctrl.show == 'delete'" ng-click="ctrl.show = 'delete'">delete account</button> |
     <button class="btn btn-link" ng-click="ctrl.signOut()">log out</button>
     <br /><br />
@@ -37,13 +36,11 @@
     <label>about you</label>
     <textarea ng-model="ctrl.profile.about" class="form-control" rows="5"></textarea>
     <br />
-    <button ng-click="ctrl.saveProfile()" class="btn btn-default">save</button>
+    <button ng-click="ctrl.saveProfile()" class="btn btn-default">save profile</button>
     
     <a class="btn btn-link" ng-href="profile/?uid={{ctrl.getUser().uid}}">view profile page</a>
     <br />
-  </div>
-  
-  <div class="col-xs-12" ng-if="ctrl.show == 'builds'">
+
     <div class="row">
       <div class="col-xs-6" ng-if="!ctrl.storedBuilds">
         loading...
@@ -51,16 +48,23 @@
     </div>
     
     <div class="row">
-
       <div class="col-xs-12" ng-if="ctrl.build">
-        <a class="btn btn-link btn-block group-header-btn" ng-href="{{ctrl.getBuildLink(ctrl.build)}}">
-
-          <h3 class="text-left">
+        <br />
+        <br />
+        <br />
+        <label>build to publish</label>
+        <br />
+        <a ng-href="{{ctrl.getBuildLink(ctrl.build)}}">view build in simulator</a>
+        
+          <h3>
+          <small>
+          Level 93 {{ctrl.getBuildJobName(ctrl.build)}}
+          </small>
+          <br />
             <dnsim-job-icon item="ctrl.getJob(ctrl.build)">
             </dnsim-job-icon>
-            build to publish
-            <small><br />
-            {{ctrl.getBuildJobName(ctrl.build)}}</small>
+            <dnsim-view-build build="ctrl.build" ng-if="ctrl.build"></dnsim-view-build>
+            
           </h3>
 
         </a>

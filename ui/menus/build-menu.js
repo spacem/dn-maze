@@ -24,23 +24,16 @@ function menuController(region, jobs) {
     
     var parts = window.location.href.replace('//', '::').split('/');
     if(parts && parts.length > 2) {
-      jobs.init(
-        function() {},
-        function() {
         
-        var jobName = parts[parts.length-2];
-        jobName = jobName.substr(0, jobName.length-3);
-        console.log('finding id for job ', jobName);
-        var job = jobs.getByEnglishName(jobName);
-          
-        window.location = "https://spacem.github.io/dnskillsim/publish?build="
-          + parts[parts.length-1]
-          + '&region='
-          + region.dntLocation.region
-          + '&job='+job.id;
-        });
-      }
+      var jobName = parts[parts.length-2];
+      jobName = jobName.substr(0, jobName.length-3);
+      window.location = "https://spacem.github.io/dnskillsim/publish?build="
+        + parts[parts.length-1]
+        + '&region='
+        + region.dntLocation.region
+        + '&job='+jobName;
     }
+  }
 }
 
 })();
