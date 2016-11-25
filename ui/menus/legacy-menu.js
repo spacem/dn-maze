@@ -11,12 +11,17 @@ function menu() {
     },
     templateUrl: 'ui/menus/legacy-menu.html',
     controllerAs: 'ctrl',
-    controller: menuController,
+    controller: ['region', menuController],
   };
 }
 
-function menuController() {
-
+function menuController(region) {
+  
+  var vm = this;
+  
+  vm.getRegion = function() {
+    return region.dntLocation.region;
+  }
 }
 
 })();

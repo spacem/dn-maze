@@ -8,7 +8,6 @@ function menu() {
     restrict: 'E',
     scope: false,
     bindToController: {
-      jobName: '=jobName'
     },
     templateUrl: 'ui/menus/build-menu.html',
     controllerAs: 'ctrl',
@@ -19,6 +18,10 @@ function menu() {
 function menuController(region, jobs) {
   
   var vm = this;
+  
+  vm.getRegion = function() {
+    return region.dntLocation.region;
+  }
   
   vm.publishBuild = function() {
     
