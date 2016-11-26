@@ -280,6 +280,11 @@ function strict_switch() {
 
 var build_chars = '-0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_'.split('');
 function history_push() {
+  
+  if(typeof dskills === 'undefined') {
+    return;
+  }
+
   var build_path = [];
   dskills.each(function() {
     var skillID = this.getAttribute('data-skill');
