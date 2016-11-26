@@ -20,7 +20,9 @@ function menuController(region) {
   var vm = this;
   
   vm.getRegion = function() {
-    return region.dntLocation.region;
+    if(region.dntLocation) {
+      return region.dntLocation.region;
+    }
   }
 }
 
