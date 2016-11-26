@@ -15,10 +15,29 @@ angular.module('dnsim').controller('RegionCtrl',
     vm.dntVersion = '';
     setDntVersion();
     
+    vm.toggleEdit = function() {
+      vm.edit = !vm.edit;
+      if(history_push) {
+        window.setTimeout(history_push, 100);
+      }
+    }
+    
+    vm.setHoverLocation = function(hoverLocation) {
+      vm.hoverLocation = hoverLocation;
+      if(history_push) {
+        window.setTimeout(history_push, 1);
+      }
+    }
+    
     function setDntVersion() {
       // console.log('setting version for ', vm.region.dntLocation);
       if(vm.region.dntLocation && vm.region.dntLocation.url) {
-        $http.get(vm.region.dntLocation.url + '/Version.cfg').then(function(res) {
+        var url = vm.region.dntLocation.url + '/Version.cfg';
+        $http({
+          url: url,
+          method: 'GET',
+          transformResponse: undefined
+        }).then(function(res) {
           if(res && res.data) {
             var newLineDetails = res.data.split('\r\n');
             if(newLineDetails.length) {
@@ -50,6 +69,9 @@ angular.module('dnsim').controller('RegionCtrl',
     };
     
     vm.setLocation = function(location) {
+      if(history_push) {
+        history_push();
+      }
       region.setLocation(location);
       vm.edit = false;
       setDntVersion();

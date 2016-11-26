@@ -1,8 +1,8 @@
 (function () {
 'use strict';
 
-angular.module('dnsim').factory('region', ['translations','dntReset','dntData','$window','$timeout', region]);
-function region(translations,dntReset,dntData,$window,$timeout) {
+angular.module('dnsim').factory('region', ['translations','dntReset','dntData','$window','$timeout','$route', region]);
+function region(translations,dntReset,dntData,$window,$timeout,$route) {
   
   var alternativeFiles = {region: 'ALT', name: 'Alternative user specified files', url : ''};
   var hostedFiles =[
@@ -78,6 +78,7 @@ function region(translations,dntReset,dntData,$window,$timeout) {
           console.log('running github', location);
           localStorage.setItem('lastDNTRegion', location.region);
           this.setTLocation(location);
+          this.init();
         }
         else {
           console.log('running on heroku');
@@ -85,6 +86,7 @@ function region(translations,dntReset,dntData,$window,$timeout) {
           for(var i=2;i<parts.length;++i) {
             newUrl += '/' + parts[i];
           }
+          console.log('setting location to ', newUrl);
           $window.location.href = newUrl;
         }
       }
@@ -104,7 +106,7 @@ function region(translations,dntReset,dntData,$window,$timeout) {
           translations.small = !override;
           translations.location = this.tlocation.url;
           translations.init(function() {}, function() {
-            // $route.reload();
+            $route.reload();
           });
         }
       }

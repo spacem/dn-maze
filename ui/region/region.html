@@ -1,7 +1,7 @@
 <div class="toggle-box">
   <button 
     class="light-toggle toggle-box-button"
-    ng-click="ctrl.edit = !ctrl.edit;"
+    ng-click="ctrl.toggleEdit()"
     title="{{ctrl.getDntLocation().name}}">
     {{ctrl.getDntLocation().region}}
   </button>
@@ -25,8 +25,8 @@
         ng-href="#"
         class="region-hover"
         ng-click="ctrl.setLocation(currentLocation)"
-        ng-mouseover="ctrl.hoverLocation = currentLocation"
-        ng-mouseleave="ctrl.hoverLocation = ctrl.getDntLocation()">
+        ng-mouseover="ctrl.setHoverLocation(currentLocation)"
+        ng-mouseleave="ctrl.setHoverLocation(ctrl.getDntLocation())">
         
         <div class="col-xs-10 col-sm-11 text-right toggle-text">
           {{::currentLocation.name}}
