@@ -17,14 +17,14 @@ angular.module('dnsim').controller('RegionCtrl',
     
     vm.toggleEdit = function() {
       vm.edit = !vm.edit;
-      if(history_push) {
+      if(typeof history_push !== 'undefined') {
         window.setTimeout(history_push, 100);
       }
     }
     
     vm.setHoverLocation = function(hoverLocation) {
       vm.hoverLocation = hoverLocation;
-      if(history_push) {
+      if(typeof history_push !== 'undefined') {
         window.setTimeout(history_push, 1);
       }
     }
@@ -69,7 +69,7 @@ angular.module('dnsim').controller('RegionCtrl',
     };
     
     vm.setLocation = function(location) {
-      if(history_push) {
+      if(typeof history_push !== 'undefined') {
         history_push();
       }
       region.setLocation(location);
