@@ -1,11 +1,15 @@
 (function () {
 'use strict';
-angular.module('dnsim').controller('BuildSearchCtrl', ['$routeParams','$location','$timeout','onlineService','jobs', buildSearch]);
+angular.module('dnsim').controller('BuildSearchCtrl', ['$routeParams','$location','$timeout','onlineService','jobs', 'region', buildSearch]);
 
-function buildSearch($routeParams,$location,$timeout,onlineService,jobs) {
+function buildSearch($routeParams,$location,$timeout,onlineService,jobs,region) {
   'use strict';
   
   var vm = this;
+  
+  if($routeParams.region) {
+    region.setLocationByName($routeParams.region);
+  }
   
   vm.maxDisplay = 15;
   vm.totalNumResults = 0;

@@ -7,6 +7,10 @@ function publish($location, onlineService, $routeParams, region, jobs) {
   
   var vm = this;
   
+  if($routeParams.region) {
+    region.setLocationByName($routeParams.region);
+  }
+  
   vm.show = $routeParams.show;
   
   if($routeParams.build && $routeParams.job && $routeParams.region) {

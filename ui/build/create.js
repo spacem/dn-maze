@@ -1,11 +1,16 @@
 (function () {
 'use strict';
-angular.module('dnsim').controller('CreateCtrl', ['$location','$window','$timeout','region',create]);
+angular.module('dnsim').controller('CreateCtrl', ['$location','$window','$timeout','region','$routeParams', create]);
 
-function create($location, $window, $timeout, region) {
+function create($location, $window, $timeout, region, $routeParams) {
   'use strict';
   
   var vm = this;
+  
+  if($routeParams.region) {
+    region.setLocationByName($routeParams.region);
+  }
+  
   vm.setJob = function() {
     $timeout(function() {
       console.log('they set the job', vm.job);
