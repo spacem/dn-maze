@@ -34,7 +34,7 @@
     <input ng-model="ctrl.profile.name"></input>
     <br /><br />
     <label>about you</label>
-    <textarea ng-model="ctrl.profile.about" class="form-control" rows="5"></textarea>
+    <textarea ng-model="ctrl.profile.about" class="form-control" rows="4"></textarea>
     <br />
     <button ng-click="ctrl.saveProfile()" class="btn btn-default">save profile</button>
     
@@ -56,22 +56,19 @@
         <br />
         <a ng-href="{{ctrl.getBuildLink(ctrl.build)}}">view build in simulator</a>
         
-          <h3>
-          <small>
-          Level 93 {{ctrl.build.region}} {{ctrl.getBuildJobName(ctrl.build)}}
-          </small>
-          <br />
-            <dnsim-job-icon item="ctrl.getJob(ctrl.build)">
-            </dnsim-job-icon>
-            <dnsim-view-build build="ctrl.build" ng-if="ctrl.build"></dnsim-view-build>
-            
-          </h3>
-
-        </a>
+        <h3>
+        <small>
+        Level 93 {{ctrl.build.region}} {{ctrl.getBuildJobName(ctrl.build)}}
+        </small>
+        <br />
+          <dnsim-job-icon item="ctrl.getJob(ctrl.build)">
+          </dnsim-job-icon>
+        </h3>
+        <dnsim-view-build build="ctrl.build" ng-if="ctrl.build"></dnsim-view-build>
 
         <div class="row form-group">
           <div class="col-xs-12 col-sm-8">
-            <label>name</label><br />
+            <label>build/character name</label><br />
             <input ng-model="ctrl.build.name" class="form-control"></input>
           </div>
           <div class="col-xs-12 col-sm-4">
@@ -79,8 +76,9 @@
             <input ng-model="ctrl.build.guild" class="form-control"></input>
           </div>
           <div class="col-xs-12">
-            <label>about</label>
-            <input ng-model="ctrl.build.about" class="form-control"></input>
+            <br />
+            <label>about the build</label>
+            <textarea ng-model="ctrl.build.about" class="form-control" rows="4"></textarea>
           </div>
           <div class="col-xs-12 text-right">
             <br />

@@ -23,6 +23,7 @@ function viewBuildController() {
   vm.baseSkillNums = [];
   vm.specSkillNums = [];
   vm.finalSkillNums = [];
+  vm.awakenSkillNums = [];
   setupSkillNums();
 
   function setupSkillNums() {
@@ -36,6 +37,10 @@ function viewBuildController() {
     
     for(i=6*4*2;i<6*4*3;++i) {
       vm.finalSkillNums.push(getSkillNum(i));
+    }
+    
+    for(i=6*4*3;i<6*4*4;++i) {
+      vm.awakenSkillNums.push(getSkillNum(i));
     }
   }
   
