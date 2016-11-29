@@ -106,7 +106,7 @@
         </a>
         <p>
           region: {{ctrl.storedBuilds[buildName].region}}<br />
-          <em>{{ctrl.storedBuilds[buildName].about}}</em>
+          <em style="white-space:pre-wrap;">{{ctrl.storedBuilds[buildName].about}}</em>
         </p>
         <button ng-hide="ctrl.serverToDelete == buildName" class="btn btn-default" ng-click="ctrl.deleteServer(buildName)">delete</button>
         <button class="btn btn-default" ng-if="ctrl.serverToDelete == buildName" ng-click="ctrl.reallyDeleteServer(buildName)">press to actually delete</button>

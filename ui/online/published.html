@@ -11,9 +11,9 @@
         <span ng-if="ctrl.build.region">in {{ctrl.build.region}}</span>
         <span ng-if="ctrl.build.about">
           <br />
-          <em>
-            {{ctrl.build.about}}
-          </em>
+          <em style="white-space:pre-wrap;">
+{{ctrl.build.about}}
+</em>
         </span>
         <br />
       </small>
@@ -22,7 +22,7 @@
     <p>
       created by: <a ng-href="profile/?uid={{ctrl.uid}}">{{ctrl.profile.name || 'unnamed user'}}</a>
       <br />
-      <em>{{ctrl.profile.about}}</em>
+      <em style="white-space:pre-wrap;">{{ctrl.profile.about}}</em>
     </p>
     
     <a ng-href="{{ctrl.getBuildLink(ctrl.build)}}">
