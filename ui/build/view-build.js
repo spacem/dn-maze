@@ -46,7 +46,7 @@ function viewBuildController() {
   
   function getSkillNum(index) {
     if(vm.build) {
-      var chars = vm.build.build.split('');
+      var chars = vm.build.build.replace(/[!\.']/g,'').split('');
       if(chars.length > index) {
         var char = chars[index];
         var num = parseInt(char, 36);
