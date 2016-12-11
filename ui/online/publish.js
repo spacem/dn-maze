@@ -40,11 +40,17 @@ function publish($location, onlineService, $routeParams, region, jobs) {
       var job = jobs.getByEnglishName(englishJobName.toUpperCase());
       if(job) {
         
+        var user = vm.getUser();
+        var buildName = 'player1';
+        if(vm.profile && vm.profile.name) {
+          buildName = vm.profile.name;
+        }
+        
         vm.build = {
           build: sessionStorage.getItem('current_skill_build'),
           job: job.id,
           region: sessionStorage.getItem('current_skill_build_region'),
-          name: 'new build'
+          name: buildName
         };
   
         if(!vm.build.build || !vm.build.job || !vm.build.region) {

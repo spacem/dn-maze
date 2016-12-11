@@ -30,8 +30,10 @@
   </div>
   
   <div class="col-xs-12 form-group" ng-if="ctrl.profile && (!ctrl.show || ctrl.show == 'profile')">
-    <label>display name </label><br />
+    <label>profile name</label><br />
     <input ng-model="ctrl.profile.name"></input>
+    <br />
+    <em>players will be able to view all builds you published from your profile page</em>
     <br /><br />
     <label>about you</label>
     <textarea ng-model="ctrl.profile.about" class="form-control" rows="4"></textarea>
@@ -68,7 +70,7 @@
 
         <div class="row form-group">
           <div class="col-xs-12 col-sm-8">
-            <label>build/character name</label><br />
+            <label>build/character name (ign)</label><br />
             <input ng-model="ctrl.build.name" class="form-control"></input>
           </div>
           <div class="col-xs-12 col-sm-4">
