@@ -12,6 +12,11 @@ module.exports = function(configs) {
   var json_lang = JSON.stringify(lang['public']);
   
   router.get('/', function(req, res) {
+    res.writeHead(301, {
+      Location: 'https://spacem.github.io/dnskillsim/'
+    });
+    res.end();
+/*
     res.render('home', {
       title: "dnskillsim - dragon nest skill simulator",
       fn: maze.fn,
@@ -24,6 +29,7 @@ module.exports = function(configs) {
       json_lang: json_lang,
       region: configs.region
     });
+*/
   });
 
   router.get('/' + configs.region + '/', function(req, res) {
