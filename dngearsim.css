@@ -12,15 +12,6 @@ border-radius: 10px;
 border-top-width: 0;
 }
 
-.list-group-item {
-background-color: rgb(233,231,224);
-}
-
-.list-group-item.active {
-background-color: rgb(196,189,173);
-}
-
-
 /*
 .search-back {
 background: url(images/search-background.jpeg)  no-repeat center center fixed;
@@ -55,27 +46,27 @@ border-width: 5px;
 border-radius: 10px;
 }
 .normal-grade,
-.-grade {
+.-grade, .-grade:hover {
 color: #8d8578;
 border-color: #8d8578;
 }
-.magic-grade {
+.magic-grade, .magic-grade:hover {
 color: #4a5510;
 border-color: #4a5510;
 }
-.rare-grade {
+.rare-grade, .rare-grade:hover {
 color: #5891c1;
 border-color: #5891c1;
 }
-.epic-grade {
+.epic-grade, .epic-grade:hover {
 color: #cc782f;
 border-color: #cc782f;
 }
-.unique-grade {
+.unique-grade, .unique-grade:hover {
 color: #6119a9;
 border-color: #6119a9;
 }
-.legendary-grade {
+.legendary-grade, .legendary-grade:hover {
 color: #dc2355;
 border-color: #dc2355;
 }
@@ -103,11 +94,11 @@ border-style: none;
 font-size: 50%;
 }
 .dark-toggle {
-background: url(public/images/dark_toggle.png) no-repeat center center;
+background: url(images/dark_toggle.png) no-repeat center center;
 color: #8d8578;
 }
 .light-toggle {
-background: url(public/images/light_toggle.png) no-repeat center center;
+background: url(images/light_toggle.png) no-repeat center center;
 color: white;
 }
 .toggle-text {
@@ -289,7 +280,7 @@ background-position: -610px -10px;
   background: url("images/icons/itemicon42.png") -45px -164px;
 }
 .cat-icon-techs {
-  background: url("images/icons/itemicon42.png") -45px -164px;
+  background: url("images/icons/itemicon41.png") -205px -604px;
 }
 .cat-icon-offensive {
   background: url("images/icons/itemicon92.png") -85px -44px;
@@ -300,14 +291,17 @@ background-position: -610px -10px;
 .cat-icon-enhancement {
   background: url("images/icons/itemicon91.png") -125px -4px;
 }
-.cat-icon-unique {
+.cat-icon-expedition {
   background: url("images/icons/itemicon91.png") -205px -4px;
 }
 .cat-icon-talisman {
   background: url("images/icons/itemicon92.png") -165px -124px;
 }
+.cat-icon-imprint {
+  background: url("images/icons/itemicon74.png") -45px -524px;
+}
 .cat-icon-costume {
-  background: url("images/icons/itemicon04.png") -365px -724px;
+  background: url("images/icons/itemicon132.png") -85px -4px;
 }
 .cat-icon-cash {
   background: url("images/icons/itemicon23.png") -45px -724px;
@@ -321,16 +315,66 @@ background-position: -610px -10px;
 .cat-icon-custom {
   background: url("images/icons/skillicon07.png") -205px -44px;
 }
+.cat-icon-everything {
+  background: url("images/icons/itemicon62.png") -85px -404px;
+}
 
 .cat-icon {
 display: inline-block;
 width: 34px;
 height: 30px;
 margin-top: -8px;
-margin-bottom: -8px;
--webkit-filter: grayscale(20%) sepia(10%);
-filter: grayscale(50%) invert(100%) blur(5px);
+margin-bottom: -10px;
+padding-left: 0px;
+margin-left: 0px;
+border: solid 3px;
+border-radius: 15px;
+color: #555;
 }
+
+.list-group-item {
+background-color: rgb(233,231,224);
+outline-color: rgb(233,231,224);
+padding-left: 0px;
+padding-right: 0px;
+padding-top: 7px;
+padding-bottom: 7px;
+border-radius: 18px 0px 0px 18px;
+}
+
+.list-group-item:focus {
+border-color: rgb(196,189,173);
+}
+
+.list-group-item:active {
+border-color: rgb(196,189,173);
+}
+
+
+.list-group-item.active:hover {
+background-color: rgb(196,189,173);
+border-color: rgb(196,189,173);
+text-shadow: 0 0 0 #ddd;
+color: #555;
+background-image: linear-gradient(120deg, rgb(196,189,173), rgb(233,231,224));
+}
+ 
+.list-group-item.active:focus {
+background-color: rgb(196,189,173);
+border: 0px;
+text-shadow: 0 0 0 #ddd;
+color: #555;
+background-image: linear-gradient(120deg, rgb(196,189,173), rgb(233,231,224));
+ }
+
+.list-group-item.active {
+background-color: rgb(196,189,173);
+border-color: rgb(233,231,224);
+text-shadow: 0 0 0 #ddd;
+color: #555;
+background-image: linear-gradient(120deg, rgb(196,189,173), rgb(233,231,224));
+}
+
 .table-look {
   padding: 6px;
   line-height: 1.42857143;
@@ -351,9 +395,20 @@ filter: grayscale(50%) invert(100%) blur(5px);
 a.region-hover:hover {
   background-color: #eee;
 }
-.logo-image {
-  width: 25px;
-  display: inline-block;
-  margin-top: 5px;
-  background: url(/dnskillsim/public/images/dnskillsim.png) no-repeat center top;
+.sim-error a {
+  color: rgb(196,189,173);
+}
+.sim-error {
+  background-color: #cc0000;
+  color: rgb(196,189,173);
+}
+.btn-link, a {
+  color: #555;
+  border: 0px;
+}
+.btn-link:hover, a:hover {
+  color: #555;
+  text-decoration: none;
+  background-image: linear-gradient(120deg, rgb(233,231,224), rgb(196,189,173));
+  border-color: rgb(196,189,173);
 }

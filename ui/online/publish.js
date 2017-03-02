@@ -73,6 +73,8 @@ function publish($location, onlineService, $routeParams, region, jobs) {
         else {
           vm.storedBuilds = {};
         }
+      }).catch(function(err) {
+        vm.storedBuilds = {};
       });
     }
   }

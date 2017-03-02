@@ -20,13 +20,13 @@
     </h3>
     
     <p>
-      created by: <a ng-href="profile/?uid={{ctrl.uid}}">{{ctrl.profile.name || 'unnamed user'}}</a>
+      created by: <a ng-href="profile/?uid={{ctrl.uid}}">&raquo;{{ctrl.profile.name || 'unnamed user'}}</a>
       <br />
       <em style="white-space:pre-wrap;">{{ctrl.profile.about}}</em>
     </p>
     
     <a ng-href="{{ctrl.getBuildLink(ctrl.build)}}">
-      view this build in the simulator
+      &raquo;view this build in the simulator
     </a>
     <br /><br />
   </div>

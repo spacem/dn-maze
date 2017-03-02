@@ -21,6 +21,8 @@ function profile($location, $routeParams, onlineService, jobs) {
       else {
         vm.storedBuilds = {};
       }
+    }).catch(function(err) {
+      vm.storedBuilds = {};
     });
   }
   
@@ -32,6 +34,8 @@ function profile($location, $routeParams, onlineService, jobs) {
       else {
         vm.profile = {};
       }
+    }).catch(function(err) {
+      vm.profile = {};
     });
   }
   

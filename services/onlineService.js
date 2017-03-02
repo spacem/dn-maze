@@ -75,8 +75,13 @@ function onlineService($window, $q) {
     console.log('get build');
     return $q(function(resolve, reject) {
       firebase.database().ref('skill-builds/' + uid + '/' + stripBuildName(buildName)).once('value', function(storedProfile) {
-        if(storedProfile) {
-          resolve(decompressBuild(storedProfile.val()));
+        if(storedProfile && storedProfile.val()) {
+          try {
+            resolve(decompressBuild(storedProfile.val()));
+          }
+          catch(ex) {
+            reject(ex);
+          }
         }
         else {
           resolve({});
@@ -102,12 +107,17 @@ function onlineService($window, $q) {
       console.log('getting builds');
       firebase.database().ref('skill-builds/' + uid).once('value', function(storedBuilds) {
         if(storedBuilds) {
-          var retVal = {};
-          var val = storedBuilds.val();
-          for(var buildName in val) {
-            retVal[buildName] = decompressBuild(val[buildName]);
+          try {
+            var retVal = {};
+            var val = storedBuilds.val();
+            for(var buildName in val) {
+              retVal[buildName] = decompressBuild(val[buildName]);
+            }
+            resolve(retVal);
           }
-          resolve(retVal);
+          catch(ex) {
+            reject(ex);
+          }
         }
         else {
           resolve({});
@@ -145,24 +155,30 @@ function onlineService($window, $q) {
   }
   
   function decompressBuild(compressedBuild) {
-    var stringifiedData = LZString.decompressFromUTF16(compressedBuild);
-    var build = JSON.parse(stringifiedData);
-    
-    if(build.items) {
-      _.each(build.items, function(item) {
-        item.fullStats = item.stats;
-        
-        if(item.enchantmentStats && item.enchantmentStats.length) {
-          item.fullStats = hCodeValues.mergeStats(item.enchantmentStats, item.fullStats);
-        }
-        
-        if(item.sparkStats && item.sparkStats.length) {
-          item.fullStats = hCodeValues.mergeStats(item.sparkStats, item.fullStats);
-        }
-      });
+    try {
+      var stringifiedData = LZString.decompressFromUTF16(compressedBuild);
+      var build = JSON.parse(stringifiedData);
+      
+      if(build.items) {
+        _.each(build.items, function(item) {
+          item.fullStats = item.stats;
+          
+          if(item.enchantmentStats && item.enchantmentStats.length) {
+            item.fullStats = hCodeValues.mergeStats(item.enchantmentStats, item.fullStats);
+          }
+          
+          if(item.sparkStats && item.sparkStats.length) {
+            item.fullStats = hCodeValues.mergeStats(item.sparkStats, item.fullStats);
+          }
+        });
+      }
+      
+      return build;
     }
-    
-    return build;
+    catch(ex) {
+      console.log('cannot parse build ', stringifiedData);
+      throw ex;
+    }
   }
   
   function saveBuild(buildName, build) {

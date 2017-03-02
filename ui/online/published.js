@@ -36,6 +36,9 @@ function published(onlineService, $location, $routeParams, jobs) {
       else {
         vm.profile = {};
       }
+    }).catch(function(err) {
+      console.log('unable to load profile', err);
+      vm.profile = {};
     });
   }
   

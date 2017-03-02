@@ -40,11 +40,19 @@ function buildSearch($routeParams,$location,$timeout,onlineService,jobs,region) 
       vm.allResults = [];
       for(var uid in vm.jobBuilds) {
         for(var buildName in vm.jobBuilds[uid]) {
-          vm.allResults.push({
-            uid: uid,
-            name: buildName,
-            data: vm.jobBuilds[uid][buildName]
-          });
+          if(vm.jobBuilds[uid][buildName] && vm.jobBuilds[uid][buildName].region) {
+            var result = {
+              uid: uid,
+              name: buildName,
+              data: vm.jobBuilds[uid][buildName]
+            };
+            
+            if(result.data.about && result.data.about.length > 256) {
+              result.data.about = result.data.about.substr(0, 256);
+            }
+            
+            vm.allResults.push(result);
+          }
         }
       }
     }

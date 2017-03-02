@@ -38,9 +38,9 @@
     <label>about you</label>
     <textarea ng-model="ctrl.profile.about" class="form-control" rows="4"></textarea>
     <br />
-    <button ng-click="ctrl.saveProfile()" class="btn btn-default">save profile</button>
+    <button ng-disabled="!ctrl.profile.name" ng-click="ctrl.saveProfile()" class="btn btn-default">save profile</button>
     
-    <a class="btn btn-link" ng-href="profile/?uid={{ctrl.getUser().uid}}">view profile page</a>
+    <a class="btn btn-link" ng-href="profile/?uid={{ctrl.getUser().uid}}">&raquo;view profile page</a>
     <br />
 
     <div class="row">
@@ -56,16 +56,16 @@
         <br />
         <label>build to publish</label>
         <br />
-        <a ng-href="{{ctrl.getBuildLink(ctrl.build)}}">view build in simulator</a>
+        <a ng-href="{{ctrl.getBuildLink(ctrl.build)}}">&raquo;view build in simulator</a>
         
         <h3>
+        <dnsim-job-icon item="ctrl.getJob(ctrl.build)">
+        </dnsim-job-icon>
         <small>
         Level 93 {{ctrl.build.region}} {{ctrl.getBuildJobName(ctrl.build)}}
         </small>
-        <br />
-          <dnsim-job-icon item="ctrl.getJob(ctrl.build)">
-          </dnsim-job-icon>
         </h3>
+        <br />
         <dnsim-view-build build="ctrl.build" ng-if="ctrl.build"></dnsim-view-build>
 
         <div class="row form-group">
@@ -84,7 +84,7 @@
           </div>
           <div class="col-xs-12 text-right">
             <br />
-            <button class="btn btn-default" ng-click="ctrl.save()">publish</button>
+            <button ng-disabled="!ctrl.build.name" class="btn btn-default" ng-click="ctrl.save()">publish</button>
           </div>
         </div>
       </div>

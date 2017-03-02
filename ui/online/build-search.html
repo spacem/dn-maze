@@ -4,7 +4,7 @@
 <h3 ng-if="ctrl.job">{{ctrl.job.name}} builds
   <small>
     <button class="btn btn-link" ng-click="ctrl.job = null">
-      change class
+      &raquo;change class
     </button>
   </small>
 </h3>
@@ -15,21 +15,28 @@
 <input class="form-control" ng-model="ctrl.filter"></input>
 </p>
 
-<table ng-if="ctrl.job && ctrl.jobBuilds" class="table">
-  <tr ng-repeat="build in ctrl.getFilteredBuilds() track by $index">
-    <td>
-    {{build.data.region}}
-    <a ng-href="published/?uid={{build.uid}}&buildName={{build.name | escape}}">{{build.name}}</a>
-    <span ng-if="build.data.guild">
-    [{{build.data.guild}}]
-    </span>
-    <br />
-    <em>
-    {{build.data.about}}
-    </em>
-    </td>
-  </tr>
-</table>
+<div class="container-fluid" ng-if="ctrl.job && ctrl.jobBuilds">
+  <div class="row" infinite-scroll="ctrl.showMoreResults()">
+    <div class="col-xs-12 col-md-6" ng-repeat="build in ctrl.getFilteredBuilds() track by $index">
+    <a class="list-group-item" ng-href="published/?uid={{build.uid}}&buildName={{build.name | escape}}">
+      <div>
+      <h4>
+        {{build.name}}
+        <small>
+          <span ng-if="build.data.guild">
+            [{{build.data.guild}}]
+          </span>
+          {{build.data.region}}
+        </small>
+      </h4>
+      <em>
+      {{build.data.about}}
+      </em>
+      </div>
+    </a>
+    </div>
+  </div>
+</div>
 <div class="row" ng-show="ctrl.totalNumResults >= ctrl.maxDisplay">
   <div class="col-xs-1"></div>
   <div class="col-xs-11">
