@@ -223,10 +223,11 @@ function getJadeData(configs, jobParam, levelParam, buildParam, cookies) {
 
     // if (j < build.length) throw lang.error.short_build_path
 
-    // sum of sp checks
+    /* sum of sp checks
     if (job_sp[0] > job_max_sp[0] || job_sp[1] > job_max_sp[1]
                                   || job_sp[2] > job_max_sp[2]
                                   || job_sp[0] + job_sp[1] + job_sp[2] > max_sp) throw lang.error.total_sp_exceeded;
+*/
 
     // tech validity check
     if (techs.Ring1 && techs.Ring1 == techs.Ring2) throw lang.error.invalid_tech; // rings can't be same
