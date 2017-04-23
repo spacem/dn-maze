@@ -85,6 +85,7 @@ function setupRegionDb(region, url, db) {
   app.use('/', simulator);
   app.use('/', home);
   app.use('/api/', api_tech);
+  app.use('/background', require('./routes/background'));
 }
 
 var fallback = require('./routes/fallback')();

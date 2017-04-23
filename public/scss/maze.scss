@@ -294,7 +294,7 @@ body {
 }
 
 #nav {
-	background-color: rgb(233,231,224);
+	background-color: rgba(233,231,224, 0.7);
 	border-color: #8d8578;
 	border-style: solid;
 	border-width: 5px;
@@ -379,9 +379,25 @@ background-color: #070506;
   color: #555;
   border: 0px;
 }
+
 .btn-link:hover, a:hover {
   color: #555;
   text-decoration: none;
-  background-image: linear-gradient(120deg, rgb(233,231,224), rgb(196,189,173));
-  border-color: rgb(196,189,173);
+  background: rgba(233,231,224, 0.2);
+  background-image: linear-gradient(120deg, rgba(233,231,224, 0.4), rgba(196,189,173, 0.8));
+  border: 0px;
+}
+
+.dngearsim-background-image {
+  background: url(//dnskillsim.herokuapp.com/background/background.png);
+  background-size: cover;
+  background-position: center;
+  opacity: 0.5;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  position: fixed;
+  z-index:-999;
+  /* filter: blur(4px) */
 }
