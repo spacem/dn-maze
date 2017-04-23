@@ -340,7 +340,7 @@ width: 44px;
 margin-left: 1px;
 margin-right: 1px;
 border-style: none;
-font-size: 50%;
+font-size: 75%;
 }
 .dark-toggle {
 background: url(/images/dark_toggle.png) no-repeat center center;
@@ -357,17 +357,21 @@ display: block;
 height: 25px;
 color: white;
 border-style: none;
-font-size: 70%;
 border-color: #070506;
 border-style: solid;
-border-width: 3px;
+border-width: 0px;
 border-radius: 10px;
+margin-top:0px;
+margin-bottom: 3px;
 }
 .toggle-box {
 display: inline;
 float: right;
 clear: right;
 background-color: #070506;
+color: #777;
+font-size: 15.6px;
+font-weight: 400;
 }
 .logo-image {
   width: 25px;
