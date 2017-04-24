@@ -54,9 +54,7 @@ background-size: cover;
 }
 */
 .chunkyness {
-background-color: #070506;
-opacity: 0.75;
-filter: alpha(opacity=75);
+background-color: rgba(7,5,6,0.75);
 border-color: #8d8578;
 border-style: solid;
 border-width: 5px;
@@ -121,7 +119,7 @@ background: url(images/light_toggle.png) no-repeat center center;
 color: white;
 }
 .toggle-text {
-background-color: #070506;
+background-color: rgba(0,0,0,0);
 float: left;
 display: block;
 height: 25px;
@@ -138,7 +136,7 @@ margin-bottom: 3px;
 display: inline;
 float: right;
 clear: right;
-background-color: #070506;
+background-color: rgba(0,0,0,0);
 color: #777;
 font-size: 15.6px;
 font-weight: 400;
@@ -146,7 +144,7 @@ font-weight: 400;
 
 .region-heading {
 font-size: 24px;
-color: rgb(51, 51, 51);
+color: #777;
 }
 
 .no-region {
@@ -529,4 +527,22 @@ h3>.glyphicon {
 
 footer a {
     color: #777;
+}
+
+.dnsim-logo {
+  color: rgb(91,133,168);
+  display: inline-block;
+  line-height: 0.7;
+  padding-top: 3px;
+  text-align: center;
+}
+
+.dnsim-logo-dn {
+  transform:scale(2.4,1);
+  display:inline-block;
+  font-weight: bold;
+}
+
+.dnsim-logo-gearsim {
+  font-weight: 500;
 }
