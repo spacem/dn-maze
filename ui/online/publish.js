@@ -17,6 +17,7 @@ function publish($location, onlineService, $routeParams, region, jobs) {
     sessionStorage.setItem('current_skill_build', $routeParams.build);
     sessionStorage.setItem('current_skill_build_job', $routeParams.job);
     sessionStorage.setItem('current_skill_build_region', $routeParams.region);
+    sessionStorage.setItem('current_skill_build_level', $routeParams.level);
     region.setLocationByName($routeParams.region);
     console.log('saved build from parameters');
   }
@@ -50,6 +51,7 @@ function publish($location, onlineService, $routeParams, region, jobs) {
           build: sessionStorage.getItem('current_skill_build'),
           job: job.id,
           region: sessionStorage.getItem('current_skill_build_region'),
+          level: sessionStorage.getItem('current_skill_build_level'),
           name: buildName
         };
   
@@ -109,7 +111,11 @@ function publish($location, onlineService, $routeParams, region, jobs) {
   this.getBuildLink = function(build) {
     var buildJob = jobs.getById(build.job);
     if(buildJob) {
-      return 'https://dnskillsim.herokuapp.com/' + build.region + '/' + buildJob.d.EnglishName.toLowerCase() + '-93/' + build.build;
+      var level = build.level;
+      if(!level) {
+        level = 93;
+      }
+      return 'https://dnskillsim.herokuapp.com/' + build.region + '/' + buildJob.d.EnglishName.toLowerCase() + '-' + level + '/' + build.build;
     }
   }
   

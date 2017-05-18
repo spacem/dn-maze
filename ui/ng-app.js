@@ -12,6 +12,12 @@ if(baseElement.length) {
 else {
     angular.module('dnsim', ['ngRoute','templates']);
 }
+angular.module('dnsim').config(['$compileProvider', allowAutoBindings]);
+function allowAutoBindings($compileProvider) {
+    // angular 1.6 requires use of $onInit unless this config is set
+    // https://toddmotto.com/angular-1-6-is-here
+    $compileProvider.preAssignBindingsEnabled(true);
+};
 
 function setupHtml5Mode($locationProvider) {
     $locationProvider.html5Mode({

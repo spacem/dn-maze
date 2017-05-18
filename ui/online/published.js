@@ -17,7 +17,11 @@ function published(onlineService, $location, $routeParams, jobs) {
   vm.getBuildLink = function(build) {
     var buildJob = jobs.getById(build.job);
     if(build && buildJob) {
-      return 'https://dnskillsim.herokuapp.com/' + build.region + '/' + buildJob.d.EnglishName.toLowerCase() + '-93/' + build.build;
+      var level = build.level;
+      if(!level) {
+        level = 93;
+      }
+      return 'https://dnskillsim.herokuapp.com/' + build.region + '/' + buildJob.d.EnglishName.toLowerCase() + '-' + level + '/' + build.build;
     }
   }
   

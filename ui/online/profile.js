@@ -55,7 +55,11 @@ function profile($location, $routeParams, onlineService, jobs) {
   this.getBuildLink = function(build) {
     var buildJob = jobs.getById(build.job);
     if(buildJob) {
-      return 'https://dnskillsim.herokuapp.com/' + build.region + '/' + buildJob.d.EnglishName.toLowerCase() + '-93/' + build.build;
+      var level = build.level;
+      if(!level) {
+        level = '93';
+      }
+      return 'https://dnskillsim.herokuapp.com/' + build.region + '/' + buildJob.d.EnglishName.toLowerCase() + '-' + level + '/' + build.build;
     }
   }
 }

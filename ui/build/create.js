@@ -14,7 +14,7 @@ function create($location, $window, $timeout, region, $routeParams) {
   vm.setJob = function() {
     $timeout(function() {
       console.log('they set the job', vm.job);
-      $window.location.href = 'https://dnskillsim.herokuapp.com/' + region.dntLocation.region + '/' + vm.job.d.EnglishName.toLowerCase() + '-93/-';
+      $window.location.href = 'https://dnskillsim.herokuapp.com/' + region.dntLocation.region + '/' + vm.job.d.EnglishName.toLowerCase();
     });
   }
   
