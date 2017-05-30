@@ -1,10 +1,10 @@
-function skill_adj(e) {
+function skill_adj(e, element) {
   if (e.altKey) {
     return; // don't do anything
   }
 
-  var dom = $(this);
-  var skillID = num(this.getAttribute('data-skill')); // indexOf is strict
+  var dom = $(element);
+  var skillID = num(element.getAttribute('data-skill')); // indexOf is strict
   var max = e.shiftKey || e.ctrlKey;
   var lvl = [].concat(Job.Cache[skillID]); // clone it
   var skill = db.Skills[skillID];
@@ -118,7 +118,7 @@ function skill_adj(e) {
 
   // hooks
   update_progress();
-  $dpop.update(this, dom);
+  // $dpop.update(element, dom);
   history_push();
 }
 

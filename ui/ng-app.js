@@ -5,12 +5,13 @@
 angular.module('templates', []);
 
 var baseElement = angular.element(document).find('base');
-if(baseElement.length) {
+if(baseElement.length == 1 && baseElement[0].href && baseElement[0].href.indexOf('/dnskillsim/') > 0) {
     angular.module('dnsim', ['ngRoute','angulartics','angulartics.google.analytics','templates', 'ngAria', 'infinite-scroll']);
     angular.module('dnsim').config(['$locationProvider', setupHtml5Mode]);
     angular.module('dnsim').config(['$compileProvider', allowAutoBindings]);
 }
 else {
+    console.log('base', baseElement);
     angular.module('dnsim', ['ngRoute','templates']);
 }
 

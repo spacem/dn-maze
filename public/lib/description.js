@@ -22,7 +22,8 @@ function init_description(thiz) {
                    container: $body})
          .on('mouseenter', $dpop.mouseenter)
          .on('mouseleave', $dpop.mouseleave)
-         .on('mousedown', $dpop.mousedown);
+         .on('mousedown', $dpop.mousedown)
+         .on('taphold', $dpop.mouseenter);
 }
 
 function update_description(thiz, dom) {
@@ -240,6 +241,12 @@ var $dpop = {
       } else {
         dom.data('desc', 'hover');
         $dpop.persist = null;
+      }
+    }
+    else {
+      var dom = $(this), trigger = dom.data('desc');
+      if (trigger == 'hover') {
+        dom.popover('hide');
       }
     }
   },
