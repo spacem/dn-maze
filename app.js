@@ -25,6 +25,7 @@ setupRegion('na', 'https://dnna.firebaseapp.com/maze');
 setupRegion('eu', 'https://eufiles.firebaseapp.com/maze');
 setupRegion('ina', 'https://inafiles-da491.firebaseapp.com/maze');
 setupRegion('th', 'https://thdnfiles.firebaseapp.com/maze');
+setupRegion('vn', 'https://vndnfiles.firebaseapp.com/maze');
 setupRegion('tw', 'https://twdnfiles.firebaseapp.com/maze');
 setupRegion('cdn', 'https://cdnfiles.firebaseapp.com/maze');
 setupRegion('kdn', 'https://kdnfiles.firebaseapp.com/maze');
