@@ -104,7 +104,7 @@ function onlineService($window, $q) {
   function getUserBuilds(uid) {
     console.log('get builds');
     return $q(function(resolve, reject) {
-      console.log('getting builds');
+      // console.log('getting builds');
       firebase.database().ref('skill-builds/' + uid).once('value', function(storedBuilds) {
         if(storedBuilds) {
           try {
@@ -126,12 +126,21 @@ function onlineService($window, $q) {
     });
   }
   
-  function getClassBuilds(job) {
+  function getClassBuilds(job, level) {
     console.log('get class builds');
     return $q(function(resolve, reject) {
-      console.log('getting builds', job.id);
-      firebase.database().ref('job-skill-builds/' + job.id).once('value', function(jobBuilds) {
-        console.log('ok');
+      // console.log('getting builds', job.id);
+      
+      let path;
+      if(level) {
+        path = 'level-job-skill-builds/' + level + '/' + job.id;
+      }
+      else {
+        path = 'job-skill-builds/' + job.id;
+      }
+      
+      firebase.database().ref(path).once('value', function(jobBuilds) {
+        // console.log('ok');
         if(jobBuilds) {
           resolve(jobBuilds.val());
         }
@@ -211,6 +220,9 @@ function onlineService($window, $q) {
         actions.push(
           firebase.database().ref('job-skill-builds/' + build.job + '/' + user.uid + '/' + stripBuildName(buildName)).set(data)
         );
+        actions.push(
+          firebase.database().ref('level-job-skill-builds/' + build.level + '/' + build.job + '/' + user.uid + '/' + stripBuildName(buildName)).set(data)
+        );
       }
     }
     return $q.all(actions);
@@ -249,22 +261,24 @@ function onlineService($window, $q) {
         firebase.database().ref('profile/' + user.uid).remove(),
         firebase.database().ref('private/' + user.uid).remove()];
         
-      var jobIds = [];
       for(var buildName in builds) {
         if(builds[buildName].job) {
-          jobIds.push(builds[buildName].job);
+          let build = builds[buildName];
+          let id = builds[buildName].job;
+      
+          pList.push(
+            firebase.database().ref('job-builds/' + id + '/' + user.uid).remove()
+          );
+          pList.push(
+            firebase.database().ref('job-skill-builds/' + build.job + '/' + user.uid).remove()
+          )
+          if(build.level) {
+            pList.push(
+              firebase.database().ref('job-skill-builds/' + build.level + '/' + build.job + '/' + user.uid).remove()
+            )
+          }
         }
       }
-      
-      jobIds = _.uniq(jobIds);
-      _.each(jobIds, function(id) {
-        pList.push(
-          firebase.database().ref('job-builds/' + id + '/' + user.uid).remove()
-        );
-        pList.push(
-          firebase.database().ref('job-skill-builds/' + id + '/' + user.uid).remove()
-        )
-      });
         
       $q.all(pList).then(function() {
         console.log('deleted data');
@@ -292,6 +306,8 @@ function onlineService($window, $q) {
       if(build.job) {
         pList.push(
           firebase.database().ref('job-skill-builds/' + build.job + '/' + user.uid + '/' + stripBuildName(buildName)).remove());
+        pList.push(
+          firebase.database().ref('level-job-skill-builds/' + build.level + '/' + build.job + '/' + user.uid + '/' + stripBuildName(buildName)).remove());
       }
     }
     

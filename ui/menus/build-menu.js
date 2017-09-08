@@ -25,7 +25,7 @@ function menuController(region, jobs) {
     }
   }
   
-  vm.getPublishBuild = function() {
+  vm.publishBuild = function() {
     
     var parts = window.location.href.replace('//', '::').split('/');
     if(parts && parts.length > 2 && region.dntLocation) {
@@ -33,7 +33,7 @@ function menuController(region, jobs) {
       var jobName = parts[parts.length-2];
       var level = jobName.substr(jobName.length-2);
       jobName = jobName.substr(0, jobName.length-3, 2);
-      return "https://spacem.github.io/dnskillsim/publish?build="
+      window.location.href = "https://spacem.github.io/dnskillsim/publish?build="
         + parts[parts.length-1]
         + '&region='
         + region.dntLocation.region

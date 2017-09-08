@@ -13,6 +13,10 @@
 <p ng-if="ctrl.job && ctrl.jobBuilds">
 <label>filter</label>
 <input class="form-control" ng-model="ctrl.filter"></input>
+<label class="form-check-label">
+  <input type="checkbox" ng-change="ctrl.reloadBuilds()" class="form-check-input" ng-model="ctrl.includeOldBuilds">
+  include old builds
+</label>
 </p>
 
 <div class="container-fluid" ng-if="ctrl.job && ctrl.jobBuilds">

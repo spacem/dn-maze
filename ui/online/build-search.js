@@ -21,6 +21,12 @@ function buildSearch($routeParams,$location,$timeout,onlineService,jobs,region) 
     } 
   })
   
+  this.reloadBuilds = function() {
+    vm.allResults = null;
+    vm.jobBuilds = null;
+    getClassBuilds();
+  }
+  
   this.setJob = function() {
     $timeout(function() {
       $location.search('jobId', vm.job.id);
@@ -85,7 +91,13 @@ function buildSearch($routeParams,$location,$timeout,onlineService,jobs,region) 
   
   function getClassBuilds() {
     if(vm.job) {
-      onlineService.getClassBuilds(vm.job).then(function(builds) {
+      
+      let levelLimit = null;
+      if(!vm.includeOldBuilds) {
+        levelLimit = 95;
+      }
+      
+      onlineService.getClassBuilds(vm.job, levelLimit).then(function(builds) {
         if(builds) {
           // console.log('got builds', builds);
           vm.jobBuilds = builds;
