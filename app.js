@@ -20,15 +20,15 @@ var lang = require('./lib/lang');
 var format = require('./lib/format');
 lang = lang('na');
 
-setupRegion('sea', 'https://seadnfiles.firebaseapp.com/maze');
-setupRegion('na', 'https://dnna.firebaseapp.com/maze');
-setupRegion('eu', 'https://eufiles.firebaseapp.com/maze');
+setupRegion('sea', 'https://seadnfiles.netlify.com/public/maze');
+setupRegion('na', 'https://nadnfiles.netlify.com/public/maze');
+setupRegion('eu', 'https://eudnfiles.netlify.com/public/maze');
 setupRegion('ina', 'https://inafiles-da491.firebaseapp.com/maze');
-setupRegion('th', 'https://thdnfiles.firebaseapp.com/maze');
+setupRegion('th', 'https://thdnfiles.netlify.com/public/maze');
 setupRegion('vn', 'https://vndnfiles.firebaseapp.com/maze');
 setupRegion('tw', 'https://twdnfiles.firebaseapp.com/maze');
-setupRegion('cdn', 'https://cdnfiles.firebaseapp.com/maze');
-setupRegion('kdn', 'https://kdnfiles.firebaseapp.com/maze');
+setupRegion('cdn', 'https://cdnfiles.netlify.com/public/maze');
+setupRegion('kdn', 'https://kdnfiles.netlify.com/public/maze');
 
 
 function setupRegion(region, url) {
