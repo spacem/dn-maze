@@ -1,0 +1,12 @@
+[
+  {
+    "region": "na",
+    "url": "na.dnmaze.com",
+    "name": "NA"
+  },
+  {
+    "region": "sea",
+    "url": "sea.dnmaze.com",
+    "name": "SEA"
+  }
+]
