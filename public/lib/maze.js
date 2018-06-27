@@ -1,7 +1,7 @@
 function skillsim() {
   // initialize all the images
   $('.jobsprite').each(function() {
-    this.style.backgroundImage = "url('" + urls.mainbar + "/" + $TIMESTAMP + "jobicon_pvp.png')";
+    this.style.backgroundImage = "url('" + urls.mainbar + "/" + $TIMESTAMP + "jobicon_main.png')";
   });
 
   // is async, don't care when we get it

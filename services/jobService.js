@@ -4,7 +4,7 @@
 angular.module('dnsim').factory('jobs', ['dntData', 'translations', 'itemColumnsToLoad', jobs]);
 function jobs(dntData, translations, itemColumnsToLoad) {
   
-  var fileName ='jobtable.lzjson';
+  var fileName ='jobtable.json';
   var colsToLoad = itemColumnsToLoad.jobsDnt;
   
   return {
