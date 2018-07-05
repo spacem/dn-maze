@@ -53,7 +53,6 @@ block content
 
 mixin panel_header(job, index)
   div.panel-heading= job.JobName
-    div.jobsprite(style=fn.image.job(job))
     span.label.pull-right #{data.TSP[index]}/#{job_max_sp[index]}
 
 mixin panel_body(job)
