@@ -29,6 +29,7 @@ setupRegion('vn', 'https://vndnfiles.firebaseapp.com/maze');
 setupRegion('tw', 'https://twdnfiles.firebaseapp.com/maze');
 setupRegion('cdn', 'https://cdnfiles.netlify.com/public/maze');
 setupRegion('kdn', 'https://kdnfiles.netlify.com/public/maze');
+setupRegion('br', 'https://dnbr.netlify.com/public/maze');
 
 
 function setupRegion(region, url) {
