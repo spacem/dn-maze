@@ -22,14 +22,11 @@ lang = lang('na');
 
 setupRegion('sea', 'https://seadnfiles.netlify.com/public/maze');
 setupRegion('na', 'https://nadnfiles.netlify.com/public/maze');
-setupRegion('eu', 'https://eudnfiles.netlify.com/public/maze');
-setupRegion('ina', 'https://inafiles-da491.firebaseapp.com/maze');
 setupRegion('th', 'https://thdnfiles.netlify.com/public/maze');
-setupRegion('vn', 'https://vndnfiles.firebaseapp.com/maze');
 setupRegion('tw', 'https://twdnfiles.firebaseapp.com/maze');
 setupRegion('cdn', 'https://cdnfiles.netlify.com/public/maze');
 setupRegion('kdn', 'https://kdnfiles.netlify.com/public/maze');
-setupRegion('br', 'https://dnbr.netlify.com/public/maze');
+setupRegion('jdn', 'https://jdnfiles.netlify.com/public/maze');
 
 
 function setupRegion(region, url) {

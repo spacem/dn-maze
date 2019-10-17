@@ -8,14 +8,11 @@ function region(translations,dntReset,dntData,$window,$timeout,$route) {
   var hostedFiles =[
     {region: 'sea', name: 'south east asia', url : 'https://seadnfiles.netlify.com/public'},
       {region: 'na', name: 'north america', url : 'https://nadnfiles.netlify.com/public'},
-      {region: 'eu', name: 'europe', url : 'https://eudnfiles.netlify.com/public'},
       {region: 'th', name: 'thailand', url : 'https://thdnfiles.netlify.com/public'},
-      {region: 'vn', name: 'vietnam ', url : 'https://vndnfiles.firebaseapp.com'},
       {region: 'tw', name: 'taiwan 臺灣', url : 'https://twdnfiles.firebaseapp.com'},
-      // {region: 'jdn', name: 'japan 日本', url : 'https://jdnfiles-59d57.firebaseapp.com'},
+      {region: 'jdn', name: 'japan 日本', url : 'https://jdnfiles.netlify.com/public'},
       {region: 'cdn', name: 'china 中國', url : 'https://cdnfiles.netlify.com/public'},
       {region: 'kdn', name: 'korea 대한민국', url : 'https://kdnfiles.netlify.com/public'},
-      { region: 'br', name: 'Brazil', url: 'https://dnbr.netlify.com/public' },
     ];
   
   var dntLocationRegion = localStorage.getItem('lastDNTRegion');

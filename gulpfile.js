@@ -1,11 +1,7 @@
 var gulp = require('gulp'),
     sass = require('gulp-sass'),
     rename = require('gulp-rename'),
-    uglify = require('gulp-uglify'),
     concat = require('gulp-concat'),
-    git = require('gulp-git'),
-    bump = require('gulp-bump'),
-    tag = require('gulp-tag-version'),
     sourcemaps = require('gulp-sourcemaps'),
     plumber = require('gulp-plumber'),
     fs = require('fs');
