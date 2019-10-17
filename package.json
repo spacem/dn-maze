@@ -2,7 +2,7 @@
   "name": "dnskillsim",
   "version": "1.0.0",
   "engines": {
-    "node": "4.5.0"
+    "node": "10.14.1"
   },
   "private": true,
   "scripts": {
