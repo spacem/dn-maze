@@ -156,7 +156,7 @@ function skillsim() {
       // update skill lvl
       if (level <= Job.MaxLevel) {
         Job.Techs = {};
-        lvl[0] = db.Skills[skillID].LevelLimit[0] == 1 ? 1 : 0;
+        lvl[0] = db.Skills[skillID].LevelLimit[0] == 1 && db.Skills[skillID].SkillPoint[0] == 0 ? 1 : 0;
         lvl[2] = 0;
         techs = 0;
       }
@@ -318,7 +318,7 @@ function history_push() {
     var skillID = this.getAttribute('data-skill');
     var pos = Job.Sprites[skillID][3];
     var lvl = Job.Cache[skillID];
-    var maybeMinus1 = db.Skills[skillID].LevelLimit[1-1] == 1 ? 1 : 0;
+    var maybeMinus1 = db.Skills[skillID].LevelLimit[1-1] == 1 && db.Skills[skillID].SkillPoint[1-1] == 0 ? 1 : 0;
     var b = [build_chars[lvl[0] - maybeMinus1]];
     var techs = get_tech_count(skillID);
     if (techs > 0) {

@@ -19,6 +19,10 @@ html
     
     block content
     script(type='text/javascript', src="/external-lib/jquery.min.js")
+    script.
+      jQuery(document).on("mobileinit", function() {
+        jQuery.mobile.autoInitializePage = false;
+      });
     script(type='text/javascript', src="/external-lib/jquery.mobile-1.4.5.min.js")
     
     script(type='text/javascript', src="/external-lib/bootstrap.min.js")

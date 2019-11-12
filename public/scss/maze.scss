@@ -275,22 +275,27 @@ body {
 }
 
 .panel-body {
-	background-color: rgb(233,231,224);
+	background-color: rgba(0, 0, 0, 0.8);
 	padding-left: 0px;
 	padding-right: 0px;
 }
 
 .panel-default .panel-heading {
-  background-color: #8d8578;
+  background-color: #333;
   background-image: none;
+  color: #ccc;
+}
+
+.progress-bar {
+  color: #ccc;
 }
 
 .panel-heading {
-	background-color: #070506;
+    background-color: #070506;
 }
 
 #nav {
-	background-color: rgba(233,231,224, 0.7);
+	background-color: rgba(0, 0, 0, 0.7);
 	border-color: #8d8578;
 	border-style: solid;
 	border-width: 5px;
@@ -307,8 +312,8 @@ g
 	border-top-width: 0px;
 }
 
-a {
-    color: #337ab7;
+.btn-link, a {
+    color: rgb(196,189,173);
 }
 
 .chunkyness {
@@ -448,4 +453,20 @@ footer a {
 
 .dnsim-logo-gearsim {
   font-weight: 500;
+}
+
+
+.list-group-item {
+    background-color: transparent;
+    outline-color: rgba(233,231,224, 0.1);
+    border-color: rgba(233,231,224, 0.1);
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    border-radius: 18px 0px 0px 18px;
+}
+
+.nav-tab > a {
+    color: #ccc;
 }

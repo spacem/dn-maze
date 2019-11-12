@@ -131,7 +131,7 @@ module.exports = function(configs) {
         continue;
       }
 
-      var maybePlus1 = skill.LevelLimit[0] == 1 ? 1 : 0;
+      var maybePlus1 = skill.LevelLimit[0] == 1 && skill.SkillPoint[0] == 0 ? 1 : 0;
       var level = buildChars.indexOf(c) + maybePlus1;
 
       // tech determination

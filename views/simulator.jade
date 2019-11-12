@@ -28,15 +28,15 @@ block content
           button#techs.btn.btn-sm.btn-default(type='button') Equip
       div.col-xs-12.col-sm-11
         div.form-inline: div.form-group
-          button#lv93.btn.btn-sm(type='button', class={'btn-primary': data.MaxLevel==93, 'btn-default': data.MaxLevel!=93}) lv93
-          button#lv95.btn.btn-sm(type='button', class={'btn-primary': data.MaxLevel==95, 'btn-default': data.MaxLevel!=95}) lv95
-          span &nbsp;
+          //- button#lv93.btn.btn-sm(type='button', class={'btn-primary': data.MaxLevel==93, 'btn-default': data.MaxLevel!=93}) lv93
+          //- button#lv95.btn.btn-sm(type='button', class={'btn-primary': data.MaxLevel==95, 'btn-default': data.MaxLevel!=95}) lv95
+          //- span &nbsp;
           button#pve.btn.btn-sm(type='button', class={'btn-primary': !data.ApplyType, 'btn-default': !!data.ApplyType})= lang.apply[0]
           button#pvp.btn.btn-sm(type='button', class={'btn-primary': !!data.ApplyType, 'btn-default': !data.ApplyType})= lang.apply[1]
           span &nbsp;
           button#free.btn.btn-sm(type='button', class={'btn-primary': data.Free, 'btn-default': !data.Free})= lang.mode.free
           button#strict.btn.btn-sm(type='button', class={'btn-primary': !data.Free, 'btn-default': data.Free})= lang.mode.strict
-
+        div.text-right &nbsp;notice: recent changes will have broken old builds but you can now zero dash and headbutt
     div.row
       each job, index in line
         if job.AwakenSkillTree
