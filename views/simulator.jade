@@ -36,7 +36,6 @@ block content
           span &nbsp;
           button#free.btn.btn-sm(type='button', class={'btn-primary': data.Free, 'btn-default': !data.Free})= lang.mode.free
           button#strict.btn.btn-sm(type='button', class={'btn-primary': !data.Free, 'btn-default': data.Free})= lang.mode.strict
-        div.text-right &nbsp;notice: recent changes will have broken old builds but you can now zero dash and headbutt
     div.row
       each job, index in line
         if job.AwakenSkillTree
