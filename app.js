@@ -26,6 +26,7 @@ setupRegion('th', 'https://thdnfiles.netlify.app/public/maze');
 setupRegion('tw', 'https://twdnfiles.firebaseapp.com/maze');
 setupRegion('cdn', 'https://cdnfiles.netlify.app/public/maze');
 setupRegion('kdn', 'https://kdnfiles.netlify.app/public/maze');
+setupRegion('kdn-en', 'https://kdnenfiles.netlify.app/public/maze');
 setupRegion('jdn', 'https://jdnfiles.netlify.app/public/maze');
 
 

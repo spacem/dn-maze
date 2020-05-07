@@ -13,6 +13,7 @@ function region(translations,dntReset,dntData,$window,$timeout,$route) {
       {region: 'jdn', name: 'japan 日本', url : 'https://jdnfiles.netlify.app/public'},
       {region: 'cdn', name: 'china 中國', url : 'https://cdnfiles.netlify.app/public'},
       {region: 'kdn', name: 'korea 대한민국', url : 'https://kdnfiles.netlify.app/public'},
+      {region: 'kdn-en', name: 'korea (na-language)', url : 'https://kdnenfiles.netlify.app/public'},
     ];
   
   var dntLocationRegion = localStorage.getItem('lastDNTRegion');
